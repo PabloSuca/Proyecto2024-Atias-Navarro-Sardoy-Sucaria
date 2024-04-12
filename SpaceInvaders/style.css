@@ -1,8 +1,10 @@
 @font-face {
-    font-family: ArcadeClassic;
-    src: url(/Users/suca/LabCompu2/SpaceInvaders/Fuente/ARCADECLASSIC.ttf);
-    font-weight: normal;
-    font-style: normal;
+    
+        font-family: "Press Start 2P", system-ui;
+        src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+        font-weight: 400;
+        font-style: normal;
+      
 }
 
 body {
@@ -11,12 +13,12 @@ body {
 button {
     text-align: center;
     color: rgb(255, 255, 255);
-    font-family: 'ArcadeClassic';
+    font-family: "Press Start 2P";
     font-weight: normal;
     margin: 10;
     background-color: rgba(205, 0, 0, 0);
     border: none;
-    font-size: 60px;
+    font-size: 40px;
     cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
 }
 button:hover {
