@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Space Invaders</title>
+        <link rel="stylesheet" href="style.css">
+
+        <!-- Links Fuente Press Start 2P -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        <img width="400" height="125" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Space_invaders_logo.svg/2560px-Space_invaders_logo.svg.png" alt="Titulo del juego" > 
+    <ul>
+        <h2><textoNombre>Antes de jugar ingresa tu nombre</textNombre></h2>
+        <br>
+        <br>
+        <br>
+        <form id="miFormulario">
+            <label for="nombre">Nombre:</label><br><br>
+            <input type="text" id="nombre" name="nombre" class="input-nombre"><br><br>
+            <span id="error-nombre"></span>
+            <input type="submit" value="Continuar" class="input-continuar">
+        </form>
+    
+        <script src="ValidacionNombre.js"></script>
+        <br>
+        <br>
+        <br>
+        <h2><a href="index.html"><button>Volver al menu</button></a></h2>
+    </ul>
+    
+    </body>
+    <div class="bg"></div>
+
+    <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+
+
+    </html>

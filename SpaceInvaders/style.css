@@ -66,6 +66,78 @@ textocomo {
     cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
 }
 
+form {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P";
+    font-weight: normal;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.input-nombre {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P";
+    font-weight: normal;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    font-size: 25px;
+    cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
+}
+
+.input-continuar {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P";
+    font-weight: normal;
+    margin: 0px;
+    background-color: rgba(213, 0, 0, 0);
+    border: none;
+    font-size: 20px;
+    cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
+}
+textoNombre {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P";
+    font-weight: normal;
+    margin: 10px;
+    background-color: rgba(205, 0, 0, 0);
+    border: none;
+    font-size: 25px;
+    cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
+}
+
+#error-nombre {
+    display: none;
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%; 
+    margin-left: -60px; 
+}
+
+#error-nombre::after {
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #f44336 transparent transparent transparent;
+}
+
+.mostrar {
+    display: block !important;
+}
+
 h1 {
     text-align: center;
     margin: 1px;
