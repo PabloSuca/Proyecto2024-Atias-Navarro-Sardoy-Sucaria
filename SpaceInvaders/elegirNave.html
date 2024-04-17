@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <!-- tiene que haber una pantalla que muestre 3 tipos diferentes de naves, el usuario debe elegir una y darle a un boton de continuar, para dirigirse finalmente al juego-->
+    <head>
+        <meta charset="utf-8">
+        <title>Space Invaders</title>
+        <link rel="stylesheet" href="style.css">
+
+        <!-- Links Fuente Press Start 2P -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <img width="400" height="125" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Space_invaders_logo.svg/2560px-Space_invaders_logo.svg.png" alt="Titulo del juego" > 
+        <div class="contenedor-naves">
+            <div class="nave">
+                <img src="https://images.fineartamerica.com/images/artworkimages/medium/3/artworkimage-medium-19129652-21281190.png" alt="Nave 1">
+            </div>
+        
+            <div class="nave">
+                <img src="https://www.pngarts.com/files/3/Millennium-Falcon-Star-Wars-PNG-Image.png" alt="Nave 2">
+            </div>
+        
+            <div class="nave">
+                <img src="ruta/a/la/imagen/nave3.png" alt="Nave 3">
+            </div>
+        </div>
+
+            <h6><button id="continuar">Continuar</button></h6>
+
+            <script>
+                var naves = document.querySelectorAll('.nave');
+                var continuar = document.getElementById('continuar');
+                var naveSeleccionada = null;
+            
+                naves.forEach(function(nave, index) {
+                    nave.addEventListener('click', function() {
+                        if (naveSeleccionada !== null) {
+                            naveSeleccionada.classList.remove('seleccionada');
+                        }
+                        nave.classList.add('seleccionada');
+                        naveSeleccionada = nave;
+                    });
+                });
+            
+                continuar.addEventListener('click', function() {
+                    if (naveSeleccionada === null) {
+                        alert('Por favor, selecciona una nave antes de continuar.');
+                    } else {
+                        window.location.href = 'juego.html';
+                    }
+                });
+            </script>
+</html>

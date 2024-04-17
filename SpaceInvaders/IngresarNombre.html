@@ -17,16 +17,31 @@
     <ul>
         <h2><textoNombre>Antes de jugar ingresa tu nombre</textNombre></h2>
         <br>
+        <h4><textoNombre>Maximo 4 caracteres</textNombre></h4>
         <br>
         <br>
-        <form id="miFormulario">
+        <form id="formulario" action="elegirNave.html">
             <label for="nombre">Nombre:</label><br><br>
-            <input type="text" id="nombre" name="nombre" class="input-nombre"><br><br>
-            <span id="error-nombre"></span>
+            <input type="text" id="nombre" name="nombre" maxlength="4" class="input-nombre"><br><br>
+            <span id="error-nombre" style="color: red; display: none;">Por favor, ingresa tu nombre.</span><br><br>
             <input type="submit" value="Continuar" class="input-continuar">
         </form>
-    
-        <script src="ValidacionNombre.js"></script>
+
+        <script>
+            document.getElementById('formulario').addEventListener('submit', function(event) {
+                var nombre = document.getElementById('nombre').value;
+                if (nombre === '') {
+                    event.preventDefault();
+                    var errorNombre = document.getElementById('error-nombre');
+                    errorNombre.style.display = 'inline';
+                    errorNombre.classList.add('fade-out');
+                    setTimeout(function() {
+                        errorNombre.style.display = 'none';
+                        errorNombre.classList.remove('fade-out');
+                    }, 3000);
+                }
+            });
+        </script>
         <br>
         <br>
         <br>
