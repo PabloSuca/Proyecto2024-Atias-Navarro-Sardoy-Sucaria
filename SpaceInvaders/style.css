@@ -55,6 +55,18 @@ margin-right: 15px;
 }
 
 textocomo {
+text-align: left;
+color: rgb(255, 255, 255);
+font-family: "Press Start 2P";
+font-weight: normal;
+margin: 10;
+background-color: rgba(205, 0, 0, 0);
+border: none;
+font-size: 15px;
+cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
+}
+
+titulocomo {
 text-align: center;
 color: rgb(255, 255, 255);
 font-family: "Press Start 2P";
@@ -62,7 +74,7 @@ font-weight: normal;
 margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
-font-size: 40px;
+font-size: 30px;
 cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
 }
 
