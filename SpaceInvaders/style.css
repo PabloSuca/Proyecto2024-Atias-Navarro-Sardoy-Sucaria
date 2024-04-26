@@ -188,10 +188,11 @@ margin: 100px auto;
 }
 
 .nave img  {
-    width: 75%;
+    width: 40%;
     height: 75%;
     display: block;
-    margin: 50px;
+    margin: 45px;
+    margin-left: 155px;
 }   
 
 
