@@ -1,8 +1,22 @@
+/*Revisar si ubicar el contenido de este css en el style.css*/
+
 body {
     font-family:'Courier New', Courier, monospace;
     text-align: center;
 }
 
-#board {
-    background-color:black
+.board{
+    width:600px;
+    height:600px;
+    border:solid 2px black;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.board div{
+    width:25px;
+    height:25px;
+    border:solid 1px blue;
+    box-sizing: border-box;
+
 }
