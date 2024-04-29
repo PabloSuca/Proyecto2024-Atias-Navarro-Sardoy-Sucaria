@@ -4,11 +4,10 @@
     src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
     font-weight: 400;
     font-style: normal;
-  
 }
 
 body {
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6982'), auto;
+    cursor: url(../Imagenes/working.ani), auto;
 }
 button {
 text-align: center;
@@ -19,8 +18,7 @@ margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 40px;
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
-}
+cursor: url(../Imagenes/working.ani)}
 button:hover {
 text-decoration: underline;
 }
@@ -28,7 +26,7 @@ button::before {
 content: "";
 display: none;
 margin-left: 50px; /* Espacio entre el botón y la imagen */
-background-image: url('https://seeklogo.com/images/G/Galactic_Empire-logo-7A19A28ABA-seeklogo.com.png');
+background-image: url(../Imagenes/imperioLogo.png);
 background-size: 50px 53px; /* Tamaño de la imagen */
 width: 50px; /* Ancho de la imagen */
 height: 53px; /* Altura de la imagen */
@@ -45,7 +43,7 @@ button::after {
 content: "";
 display: none;
 margin-left: 50px; /* Espacio entre el botón y la imagen */
-background-image: url('https://seeklogo.com/images/R/Rebel_Alliance-logo-0E7561F6E4-seeklogo.com.png');
+background-image: url(../Imagenes/alianzaLogo.png);
 background-size: 50px 53px; /* Tamaño de la imagen */
 width: 50px; /* Ancho de la imagen */
 height: 53px; /* Altura de la imagen */
@@ -63,8 +61,7 @@ margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 15px;
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
-}
+cursor: url(../Imagenes/working.ani);} /*Editar formato*/
 
 titulocomo {
 text-align: center;
@@ -75,8 +72,7 @@ margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 30px;
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
-}
+cursor: url(../Imagenes/working.ani);} /*Editar formato*/
 
 form {
 text-align: center;
@@ -96,8 +92,7 @@ margin: 0px;
 background-color: rgba(0, 0, 0, 0);
 border: 2px solid rgb(255, 255, 255);
 font-size: 25px;
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
-}
+cursor: url(../Imagenes/working.ani);} /*Editar formato*/
 
 .input-continuar {
 text-align: center;
@@ -108,7 +103,7 @@ margin: 0px;
 background-color: rgba(213, 0, 0, 0);
 border: none;
 font-size: 20px;
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
+cursor: url(../Imagenes/working.ani); /*Editar formato*/
 }
 textoNombre {
 text-align: center;
@@ -119,7 +114,7 @@ margin: 10px;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 25px;
-cursor: url('http://www.rw-designer.com/cursor-extern.php?id=6980');
+cursor: url(../Imagenes/working.ani); /*Editar formato*/
 }
 
 .fade-out {
@@ -161,7 +156,7 @@ margin: 15px;
 
 
 body {
-background-image: url('https://i.ibb.co/87GbbFP/2799006.jpg');
+background-image: url(..//Imagenes/fondo.jpg);
 background-size: cover;
 }
 img {
@@ -197,7 +192,7 @@ margin: 100px auto;
 
 
 .bg {
-background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat;
+background: url(..//Imagenes/fondo.jpg) no-repeat;
 background-size: cover;
 height: 100%;
 width: 100%;

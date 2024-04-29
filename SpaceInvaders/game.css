@@ -16,7 +16,27 @@ body {
 .board div{
     width:25px;
     height:25px;
-    border:solid 1px blue;
+    border:solid 1px transparent;
     box-sizing: border-box;
 
+}
+
+.enemigo{ 
+        background-image: url(../Imagenes/naveEnemiga.png);
+        background-size: cover;
+        background-repeat: no-repeat; 
+        width: 25px; 
+        height: 25px;   }
+
+.naves{
+
+    background-color: green;
+}
+
+.disparos{
+    background-color: red;
+}
+
+.explotar{
+    background-image: url(../Imagenes/explotar.jpg);
 }
