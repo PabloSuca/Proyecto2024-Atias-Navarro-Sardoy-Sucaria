@@ -52,5 +52,16 @@ body {
 }
 
 .explotar{
-    background-image: url(../Imagenes/explotar.jpg);
+    background-image: url(../Imagenes/explotar.png);
+}
+
+.results{
+    font-family:'Courier New', Courier, monospace;
+    text-align: right;
+color: rgb(255, 255, 255);
+font-weight: normal;
+margin: 10;
+background-color: rgba(255, 255, 255, 0);
+border: none;
+font-size: 15px;
 }

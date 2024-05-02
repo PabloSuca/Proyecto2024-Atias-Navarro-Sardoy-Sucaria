@@ -1,4 +1,5 @@
 const board = document.querySelector('.board')
+const resultDisplay = document.querySelector('.results')
 const boardtamaño = 24
 const navesEnemigasBorradas=[]
 const cooldownDisparo=500; //milisegundos
@@ -8,13 +9,13 @@ let vaDerecha = true
 let direccion = 1
 let results = 0
 let ultimoDisparo =0
-
-
+let gameOver = false
 
 //Se crean los divs que representan el fondo del juego, las casillas
 for( let i=0; i<boardtamaño*boardtamaño;i++){
 const square=document.createElement('div')
 board.appendChild(square)
+
 }
 
 //Se crean los arreglos
@@ -49,6 +50,10 @@ function remove() { //funcion para remover los enemigos cuando se mueven
 }
 
 function moverdisparador(e){  //Funcion para mover la nave, falta avanzarla
+
+    if(gameOver){ //si pierde o gana, se detiene
+        return
+    }
     squares[disparoindex].classList.remove('disparador') //que cuando se mueva la nave, se vaya borrando lo anterior
     switch(e.key){
         case 'ArrowLeft':
@@ -64,6 +69,10 @@ function moverdisparador(e){  //Funcion para mover la nave, falta avanzarla
 document.addEventListener('keydown', moverdisparador)
 
 function moverenemigos(){ //funcion que maneja el movimiento de los enemigos
+
+    if(gameOver){ //si pierde o gana, se detiene
+        return
+    }
     const leftEdge = navesEnemigas[0] % boardtamaño === 0 //bordes enemigos izq
     const rightEdge = navesEnemigas[navesEnemigas.length - 1] % boardtamaño === boardtamaño - 1 //bordes enemigos der, que no se muevan a la derecha del borde
     remove()
@@ -89,20 +98,25 @@ if(rightEdge && vaDerecha) { //si tocan el borde derecho y van hacia la derecha,
     }
     draw() //reusamos la funcion draw
 
-    if (squares[disparoindex].classList.contains("enemigos")){ //si tocan a la nave pierde
+    if (squares[disparoindex].classList.contains("enemigo")){ //si tocan a la nave pierde
         resultDisplay.innerHTML = 'PERDISTE'
         clearInterval(enemigosId)
+        gameOver = true
     }
 
     if (navesEnemigasBorradas.length === navesEnemigas.length){ //si matamos todo ganamos
         resultDisplay.innerHTML = 'GANASTE'
         clearInterval(enemigosId)
+        gameOver = true
     }
 }
-enemigosId = setInterval(moverenemigos, 1000) //muevo a los enemigos cada 600 milisegundos
+enemigosId = setInterval(moverenemigos, 300) //muevo a los enemigos cada 300 milisegundos
 
 function dispara(e){ //funcion dispara a los enemigos desde la nave
 
+    if(gameOver){ //si pierde o gana, se detiene
+        return
+    }
     const currentTime = new Date().getTime(); // Obtener el tiempo actual
     if (currentTime - ultimoDisparo >= cooldownDisparo) { // Verificar si ha pasado suficiente tiempo desde el último disparo
         ultimoDisparo = currentTime; // Actualizar el tiempo del último disparo
@@ -111,6 +125,10 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
     let laserindex = disparoindex
     
     function moverLaser(){ //la funcion que mueve los lasers
+
+        if(gameOver){ //si pierde o gana, se detiene
+            return
+        }
         squares[laserindex].classList.remove('laser')
         laserindex -= boardtamaño
 
@@ -121,7 +139,7 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
             squares[laserindex].classList.remove('enemigo') //se va el enemigo
             squares[laserindex].classList.add('explotar') //oppenheimer
 
-            setTimeout (() => squares[laserindex].classList.remove('explotar'), 300)//remueve la explosion despues de 300 milisegundos
+            setTimeout (() => squares[laserindex].classList.remove('explotar'), 600)//remueve la explosion despues de 600 milisegundos
             clearInterval(laserId) 
 
             const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
@@ -140,7 +158,7 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
 document.addEventListener('keydown', dispara)
 
 //Falta incorporar selector de naves
-//Falta ver que pasa con la imagen explotar y el fondo
+//Falta ver que pasa con la imagen explotar y el fondo // BENJA
+//Enemigos bajen mas rapido // BENJA
 //Falta revisar que hacer cuando cambiamos el tamaño de la pestaña
-//Incorporar el sistema de puntos
-//Revisar que pasa en el codigo cuando gana y pierde (corregir)
+//Revisar que pasa en el codigo cuando gana y pierde, Incorporar el sistema de puntos (corregir) //BENJA BLAS (me falta todavia)
