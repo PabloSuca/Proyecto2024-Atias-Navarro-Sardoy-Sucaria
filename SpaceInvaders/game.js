@@ -1,11 +1,14 @@
 const board = document.querySelector('.board')
 const boardtamaño = 24
 const navesEnemigasBorradas=[]
-let disparoindex = 202
+const cooldownDisparo=500; //milisegundos
+let disparoindex = 516
 let enemigosId
 let vaDerecha = true
 let direccion = 1
 let results = 0
+let ultimoDisparo =0
+
 
 
 //Se crean los divs que representan el fondo del juego, las casillas
@@ -96,9 +99,14 @@ if(rightEdge && vaDerecha) { //si tocan el borde derecho y van hacia la derecha,
         clearInterval(enemigosId)
     }
 }
-enemigosId = setInterval(moverenemigos, 600) //muevo a los enemigos cada 600 milisegundos
+enemigosId = setInterval(moverenemigos, 1000) //muevo a los enemigos cada 600 milisegundos
 
 function dispara(e){ //funcion dispara a los enemigos desde la nave
+
+    const currentTime = new Date().getTime(); // Obtener el tiempo actual
+    if (currentTime - ultimoDisparo >= cooldownDisparo) { // Verificar si ha pasado suficiente tiempo desde el último disparo
+        ultimoDisparo = currentTime; // Actualizar el tiempo del último disparo
+
     let laserId
     let laserindex = disparoindex
     
@@ -127,6 +135,12 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
             laserId = setInterval(moverLaser, 100) //tiempo de movimiento laser
             }
         }
+    }
 
 document.addEventListener('keydown', dispara)
 
+//Falta incorporar selector de naves
+//Falta ver que pasa con la imagen explotar y el fondo
+//Falta revisar que hacer cuando cambiamos el tamaño de la pestaña
+//Incorporar el sistema de puntos
+//Revisar que pasa en el codigo cuando gana y pierde (corregir)
