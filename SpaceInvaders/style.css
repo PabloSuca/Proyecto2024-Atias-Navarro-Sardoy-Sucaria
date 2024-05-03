@@ -6,18 +6,36 @@
     font-style: normal;
 }
 
+/*Revisar margenes, progreso de entender el responsive design*/
+
+
+
+/*Cambiar imagen del cursor*/
 body {
     cursor: url(../Imagenes/cursorLaser.png), auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    margin: 0; 
+}
+
+.imagenTitulo{
+width: 80vw;
+height:auto;
+margin:20px;
+padding: 0px;
+
 }
 button {
 text-align: center;
 color: rgb(255, 255, 255);
 font-family: "Press Start 2P";
 font-weight: normal;
-margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
-font-size: 40px;
+font-size: 3vw; /*Tamaño relativo al ancho de la pestaña, se utiliza Viewport Width (ancho del dispositivo*/
 cursor: url(../Imagenes/cursorLaser.png),auto}
 button:hover {
 text-decoration: underline;
@@ -27,7 +45,7 @@ content: "";
 display: none;
 margin-left: 50px; /* Espacio entre el botón y la imagen */
 background-image: url(../Imagenes/imperioLogo.png);
-background-size: 50px 53px; /* Tamaño de la imagen */
+background-size: contain; /* Tamaño de la imagen */
 width: 50px; /* Ancho de la imagen */
 height: 53px; /* Altura de la imagen */
 margin: -10px auto;
@@ -44,7 +62,7 @@ content: "";
 display: none;
 margin-left: 50px; /* Espacio entre el botón y la imagen */
 background-image: url(../Imagenes/alianzaLogo.png);
-background-size: 50px 53px; /* Tamaño de la imagen */
+background-size: contain; /* Tamaño de la imagen */
 width: 50px; /* Ancho de la imagen */
 height: 53px; /* Altura de la imagen */
 margin: -10px auto;
@@ -52,15 +70,16 @@ margin-left: 15px;
 margin-right: 15px;
 }
 
+
 .textocomo {
-text-align: left;
+text-align: center;
 color: rgb(255, 255, 255);
 font-family: "Press Start 2P";
 font-weight: normal;
 margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
-font-size: 15px;
+font-size: 1.5vw;
 cursor: url(../Imagenes/cursorLaser.png);}
 
 .titulocomo {
@@ -71,7 +90,7 @@ font-weight: normal;
 margin: 10;
 background-color: rgba(205, 0, 0, 0);
 border: none;
-font-size: 30px;
+font-size: 1.5vw;
 cursor: url(../Imagenes/cursorLaser.png);} 
 
 form {
@@ -91,7 +110,7 @@ font-weight: normal;
 margin: 0px;
 background-color: rgba(0, 0, 0, 0);
 border: 2px solid rgb(255, 255, 255);
-font-size: 25px;
+font-size: 2vw;
 cursor: url(../Imagenes/cursorLaser.png);} 
 
 .input-continuar {
@@ -102,7 +121,7 @@ font-weight: normal;
 margin: 0px;
 background-color: rgba(213, 0, 0, 0);
 border: none;
-font-size: 20px;
+font-size: 2vw;
 cursor: url(../Imagenes/cursorLaser.png); 
 }
 .textoNombre {
@@ -113,7 +132,7 @@ font-weight: normal;
 margin: 10px;
 background-color: rgba(205, 0, 0, 0);
 border: none;
-font-size: 25px;
+font-size: 1.5vw;
 cursor: url(../Imagenes/cursorLaser.png); 
 }
 
@@ -128,31 +147,26 @@ cursor: url(../Imagenes/cursorLaser.png);
 
 h1 {
 text-align: center;
-margin: 1px;
+margin: 1vw;
 }
 h2 {
 text-align: center;
-margin: 15px;
-}
+margin: 1vw;}
 h3 {
 text-align: center;
-margin: 35px;
-}
+margin: 1vw;}
 
 h4 {
 text-align: center;
-margin: 15px;
-}
+margin: 1vw;}
 
 h5 {
 text-align: center;
-margin: 15px;
-}
+margin: 1vw;}
 
 h6 {
 text-align: center;
-margin: 15px;
-}
+margin: 1vw;}
 
 
 body {
@@ -161,7 +175,7 @@ background-size: cover;
 }
 img {
 display: block;
-margin: 100px auto;
+margin: 10vw auto;
 }
 
 .contenedor-naves {
