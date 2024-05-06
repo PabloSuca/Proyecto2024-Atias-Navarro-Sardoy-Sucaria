@@ -11,12 +11,15 @@ let results = 0
 let ultimoDisparo =0
 let gameOver = false
 
+
+
 //Se crean los divs que representan el fondo del juego, las casillas
 for( let i=0; i<boardtamaño*boardtamaño;i++){
 const square=document.createElement('div')
 board.appendChild(square)
 
 }
+
 
 //Se crean los arreglos
 
@@ -39,6 +42,46 @@ function draw(){
 
 draw()
 
+// Al cargar la página del juego:
+
+
+function configurarJuego(naveSeleccionada) {
+    console.log("Nave seleccionada:", naveSeleccionada);
+    const naveJugador = document.getElementById('naveJugador');
+    switch (naveSeleccionada) {
+        case 'Nave 1':
+            naveJugador.src = '../Imagenes/nave1.png';
+            naveJugador.alt = 'Nave 1';
+            disparador.classList.add('disparador-nave1');
+            break;
+        case 'Nave 2':
+            naveJugador.src = '../Imagenes/nave2.png';
+            naveJugador.alt = 'Nave 2';
+            disparador.classList.add('disparador-nave2');
+            break;
+        case 'Nave 3':
+            naveJugador.src = '../Imagenes/nave3.png';
+            naveJugador.alt = 'Nave 3';
+            disparador.classList.add('disparador-nave3');
+            break;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Verifica si hay una selección de nave en localStorage
+    const naveSeleccionada = localStorage.getItem('naveSeleccionada');
+    if (naveSeleccionada) {
+        // Utiliza la selección de la nave para configurar el juego
+        configurarJuego(naveSeleccionada);
+    } 
+    }
+);
+
+
+
+
+
+
 //La nave que dispara:
 
 squares[disparoindex].classList.add('disparador') //Hasta que unifiquemos con la imagen del las 3 naves
@@ -48,6 +91,7 @@ function remove() { //funcion para remover los enemigos cuando se mueven
         squares[navesEnemigas[i]].classList.remove('enemigo')
     }
 }
+
 
 function moverdisparador(e){  //Funcion para mover la nave, falta avanzarla
 

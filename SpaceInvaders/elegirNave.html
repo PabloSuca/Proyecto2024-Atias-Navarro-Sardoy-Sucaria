@@ -35,22 +35,28 @@
                 var continuar = document.getElementById('continuar');
                 var naveSeleccionada = null;
             
-                naves.forEach(function(nave, index) {
-                    nave.addEventListener('click', function() {
-                        if (naveSeleccionada !== null) {
-                            naveSeleccionada.classList.remove('seleccionada');
-                        }
-                        nave.classList.add('seleccionada');
-                        naveSeleccionada = nave;
-                    });
-                });
+                naves.forEach (function(nave, index) {
+                nave.addEventListener('click', function() {
+                var navePreviaSeleccionada = document.querySelector('.seleccionada');
+                if (navePreviaSeleccionada !== null) {
+                navePreviaSeleccionada.classList.remove('seleccionada');}
+
+                nave.classList.add('seleccionada');
+                naveSeleccionada = nave.querySelector('img').alt;
+                    })}
+                );
             
                 continuar.addEventListener('click', function() {
                     if (naveSeleccionada === null) {
                         alert('Por favor, selecciona una nave antes de continuar.');
                     } else {
+                        localStorage.setItem('naveSeleccionada', naveSeleccionada);
                         window.location.href = 'game.html';
                     }
                 });
+
+
+                
             </script>
+            </body>
 </html>

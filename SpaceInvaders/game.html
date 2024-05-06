@@ -4,17 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport", content="width=device-width, initial-scale=1.0">
 
-        <div class="title">
 
-            <img src="../Imagenes/tituloprovisorio1.png"
-        </div>
-        
         <link rel="stylesheet" href="game.css">
     </head>
 
     <body>
+        <div class="title">
+
+            <img src="../Imagenes/tituloprovisorio1.png" alt="titulo del juego">
+        </div>
         <div class="results">0</div>
         <div class="board"></div> 
-        <script src="game.js"></script>
+        <img id="naveJugador" src="" alt="">
+    <script src="game.js"> </script>
+    <script>
+    var naveSeleccionada = localStorage.getItem('naveSeleccionada');
+        </script>
     </body>
 </html>
