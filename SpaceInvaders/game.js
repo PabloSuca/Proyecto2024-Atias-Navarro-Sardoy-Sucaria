@@ -1,9 +1,9 @@
 const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
-const boardtamaño = 24
+const boardtamaño = 15  
 const navesEnemigasBorradas=[]
 const cooldownDisparo=500; //milisegundos
-let disparoindex = 516
+let disparoindex = 187
 let enemigosId
 let vaDerecha = true
 let direccion = 1
@@ -28,8 +28,8 @@ console.log(squares)
 
 const navesEnemigas= [
     0,1,2,3,4,5,6,7,8,9,
-    24,25,26,27,28,29,30,31,32,33,
-    48,49,50,51,52,53,54,55,56,57,
+    15,16,17,18,19,20,21,22,23,24,
+    30,31,32,33,34,35,36,37,38,39,
 ]
 
 function draw(){
@@ -47,21 +47,19 @@ draw()
 
 function configurarJuego(naveSeleccionada) {
     console.log("Nave seleccionada:", naveSeleccionada);
-    const naveJugador = document.getElementById('naveJugador');
+    
+    const disparador = document.querySelector('.disparador');
     switch (naveSeleccionada) {
         case 'Nave 1':
-            naveJugador.src = '../Imagenes/nave1.png';
-            naveJugador.alt = 'Nave 1';
+            
             disparador.classList.add('disparador-nave1');
             break;
         case 'Nave 2':
-            naveJugador.src = '../Imagenes/nave2.png';
-            naveJugador.alt = 'Nave 2';
+            
             disparador.classList.add('disparador-nave2');
             break;
         case 'Nave 3':
-            naveJugador.src = '../Imagenes/nave3.png';
-            naveJugador.alt = 'Nave 3';
+        
             disparador.classList.add('disparador-nave3');
             break;
     }
@@ -98,7 +96,7 @@ function moverdisparador(e){  //Funcion para mover la nave, falta avanzarla
     if(gameOver){ //si pierde o gana, se detiene
         return
     }
-    squares[disparoindex].classList.remove('disparador') //que cuando se mueva la nave, se vaya borrando lo anterior
+    squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length-1)}`) //que cuando se mueva la nave, se vaya borrando lo anterior
     switch(e.key){
         case 'ArrowLeft':
             if(disparoindex % boardtamaño !==0) disparoindex -=1 //para que no se mueva mas a la izquierda del borde
@@ -107,7 +105,7 @@ function moverdisparador(e){  //Funcion para mover la nave, falta avanzarla
             if (disparoindex % boardtamaño < boardtamaño - 1)disparoindex +=1 //para que no se mueva a la derecha del borde, sino que vaya volviendo izq
             break
     }
-    squares[disparoindex].classList.add('disparador')
+    squares[disparoindex].classList.add('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length-1)}`)
 }
 
 document.addEventListener('keydown', moverdisparador)
