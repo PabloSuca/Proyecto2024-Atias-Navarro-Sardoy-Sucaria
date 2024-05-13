@@ -188,6 +188,7 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
             navesEnemigasBorradas.push(naveEnemigaBorrada)
             results++
             resultDisplay.innerHTML = results
+            localStorage.setItem('results', results);
             console.log(navesEnemigasBorradas) //estos comandos son para borrar todo una vez q se destruye, enemigos y lasers
         }
     }
