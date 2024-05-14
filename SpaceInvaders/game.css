@@ -18,14 +18,26 @@ body {
     padding: 0px;
     
 }
+.perdisteTitulo { 
+    text-align: center; 
+    color: rgb(255, 255, 255); 
+    font-family: "Press Start 2P"; 
+    font-weight: normal; margin: 0px; 
+    background-color: rgba(0, 0, 0, 0); 
+    font-size: 2.5em;
+    transition: background-color 0.3s ease; 
+    position: fixed; 
+    left: 50%; 
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
 
 .botonVolver {
     padding: 10px 20px; 
-    font-size: 1em; 
+    font-family: "Press Start 2P";
+    font-size: 1em;
     color: rgb(0, 0, 0); 
-    background-color: #ddff00; 
-    border: none; 
-    border-radius: 5px; 
+    background-color: #ffffff; 
     cursor: pointer; 
     transition: background-color 0.3s ease; 
     position: fixed; 
@@ -99,15 +111,15 @@ body {
 }
 
 .results{
-    font-family:'Courier New', Courier, monospace;
+    font-family: "Press Start 2P";
     text-align: center ;
     color: rgb(255, 255, 255);
     font-weight: normal;
     margin: 1vh;
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    font-size: 1.5vh;
-    margin-left: 67vh;
+    font-size: 3vh;
+    margin-left: 63vh;
     position:relative;
-    top:9.67vh;
+    top:8vh;
 }
