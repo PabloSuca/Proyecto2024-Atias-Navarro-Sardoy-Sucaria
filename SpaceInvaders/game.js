@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
 //La nave que dispara:
 
 squares[disparoindex].classList.add('disparador') //Hasta que unifiquemos con la imagen del las 3 naves
@@ -144,15 +143,16 @@ if(rightEdge && vaDerecha) { //si tocan el borde derecho y van hacia la derecha,
         resultDisplay.innerHTML = 'PERDISTE'
         clearInterval(enemigosId)
         gameOver = true
+        const botonVolver = document.querySelector('.botonVolver');
+        botonVolver.style.display = 'block';
+
+        botonVolver.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
     }
 
-    if (navesEnemigasBorradas.length === navesEnemigas.length){ //si matamos todo ganamos
-        resultDisplay.innerHTML = 'GANASTE'
-        clearInterval(enemigosId)
-        gameOver = true
-    }
 }
-enemigosId = setInterval(moverenemigos, 300) //muevo a los enemigos cada 300 milisegundos
+enemigosId = setInterval(moverenemigos, 200) //muevo a los enemigos cada 300 milisegundos
 
 function dispara(e){ //funcion dispara a los enemigos desde la nave
 
@@ -188,7 +188,7 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
             navesEnemigasBorradas.push(naveEnemigaBorrada)
             results++
             resultDisplay.innerHTML = results
-            console.log(navesEnemigasBorradas) //estos comandos son para borrar todo una vez q se destruye, enemigos y lasers
+            console.log(navesEnemigasBorradas) //borrar todo una vez q se destruye, enemigos y lasers
         }
     }
         if (e.key === 'ArrowUp'){
@@ -199,8 +199,4 @@ function dispara(e){ //funcion dispara a los enemigos desde la nave
 
 document.addEventListener('keydown', dispara)
 
-//Falta incorporar selector de naves
-//Falta ver que pasa con la imagen explotar y el fondo // BENJA
-//Enemigos bajen mas rapido // BENJA
-//Falta revisar que hacer cuando cambiamos el tamaño de la pestaña
-//Revisar que pasa en el codigo cuando gana y pierde, Incorporar el sistema de puntos (corregir) //BENJA BLAS (me falta todavia)
+
