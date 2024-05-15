@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>Space Invaders</title>
-        <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="utf-8">
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
 
-        <style>
-            @font-face {
-                font-family: 'Press Start 2P';
-                src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
-                        url('../Fuente/PressStart2P-Regular.ttf') format('woff');
-            }
-    
-            body {
-                font-family: 'Press Start 2P', Arial;
-            }
-        </style>
-    </head>
-    
-    <body>
-        <img width="400" height="125" src="../Imagenes/tituloprovisorio1.png" alt="Titulo del juego" > 
-    <ul>
+<<<<<<< HEAD
+    <!-- Links Fuente Press Start 2P -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-        <h2><a href="index.html"><button>Volver al menu</button></a></h2>
-    </ul>
+    <style>
+        /* Estilos para la tabla */
+        #tablaDatos {
+            color: white;
+            font-weight: bold;
+            font-size: 24px; /* Ajusta el tamaño de la fuente */
+            font-family: 'Press Start 2P', cursive; /* Ajusta la fuente */
+            width: 20%; /* Ajusta el ancho de la tabla */
+            margin: 0 auto; /* Centra la tabla horizontalmente */
+        }
+        /* Estilos para las celdas de la tabla */
+        #tablaDatos td {
+            padding: 10px; /* Ajusta el espacio alrededor del texto en las celdas */
+            text-align: center; /* Centra el texto horizontalmente */
+        }
+    </style>
+</head>
 
-    </body>
+<body>
+
+    <img width="400" height="125" src="../Imagenes/tituloprovisorio1.png" alt="Titulo del juego">
+
+    <table id="tablaDatos">
+        <tr>
+            <td id="nombreGuardado"></td>
+            <td id="resultsGuardados"></td>
+        </tr>
+    </table>
+
+    <script>
+        // Función para obtener y mostrar los datos guardados
+        function mostrarDatosGuardados() {
+            // Recuperar el nombre almacenado en localStorage
+            const nombreGuardado = localStorage.getItem('nombre');
+
+            // Recuperar los resultados almacenados en localStorage
+            const resultsGuardados = localStorage.getItem('results');
+
+            // Mostrar los datos guardados en los elementos HTML correspondientes
+            document.getElementById('nombreGuardado').textContent = ` ${nombreGuardado || 'No hay nombre guardado'}`;
+            document.getElementById('resultsGuardados').textContent = ` ${resultsGuardados || 'No hay resultados guardados'}`;
+        }
+
+        // Llamar a la función para mostrar los datos guardados cuando la página se cargue
+        window.onload = mostrarDatosGuardados;
+    </script>
+    <br>
+    <br>
+    <h2><a href="index.html"><button>Volver al menu</button></a></h2>
+
+
     <div class="bg"></div>
 
     <div class="star-field">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
 
+</body>
 
-    </html>
+</html>
