@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <!-- tiene que haber una pantalla que muestre 3 tipos diferentes de naves, el usuario debe elegir una y darle a un boton de continuar, para dirigirse finalmente al juego-->
-    <head>
-        <meta charset="utf-8">
-        <title>Space Invaders</title>
-        <link rel="stylesheet" href="style.css">
+<!-- tiene que haber una pantalla que muestre 3 tipos diferentes de naves, el usuario debe elegir una y darle a un boton de continuar, para dirigirse finalmente al juego-->
 
-        <style>
-            @font-face {
-                font-family: 'Press Start 2P';
-                src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
-                        url('../Fuente/PressStart2P-Regular.ttf') format('woff');
-            }
-    
-            body {
-                font-family: 'Press Start 2P', Arial;
-            }
-        </style>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
 
-    <body>
-        <img class="titulonave" src="../Imagenes/tituloprovisorio1.png" alt="Titulo del juego" > 
-        <div class="contenedor-naves">
-            <div class="nave">
-                <img src="../Imagenes/nave1.png" alt="Nave 1">
-            </div>
-        
-            <div class="nave">
-                <img src="../Imagenes/nave2.png" alt="Nave 2">
-            </div>
-        
-            <div class="nave">
-                <img src="../Imagenes/nave3.png" alt="Nave 3">
-            </div>
+    <style>
+        @font-face {
+            font-family: 'Press Start 2P';
+            src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
+                url('../Fuente/PressStart2P-Regular.ttf') format('woff');
+        }
+
+        body {
+            font-family: 'Press Start 2P', Arial;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="titulonave" src="../Imagenes/tituloprovisorio1.png" alt="Titulo del juego">
+    <div class="contenedor-naves">
+        <div class="nave">
+            <img src="../Imagenes/nave1.png" alt="Nave 1">
         </div>
 
-            <h6><button id="continuar">Continuar</button></h6>
+        <div class="nave">
+            <img src="../Imagenes/nave2.png" alt="Nave 2">
+        </div>
 
-            <script>
-                var naves = document.querySelectorAll('.nave');
-                var continuar = document.getElementById('continuar');
-                var naveSeleccionada = null;
-            
-                naves.forEach (function(nave, index) {
-                nave.addEventListener('click', function() {
+        <div class="nave">
+            <img src="../Imagenes/nave3.png" alt="Nave 3">
+        </div>
+    </div>
+
+    <h6><button id="continuar">Continuar</button></h6>
+
+    <script>
+        var naves = document.querySelectorAll('.nave');
+        var continuar = document.getElementById('continuar');
+        var naveSeleccionada = null;
+
+        naves.forEach(function (nave, index) {
+            nave.addEventListener('click', function () {
                 var navePreviaSeleccionada = document.querySelector('.seleccionada');
                 if (navePreviaSeleccionada !== null) {
-                navePreviaSeleccionada.classList.remove('seleccionada');}
+                    navePreviaSeleccionada.classList.remove('seleccionada');
+                }
 
                 nave.classList.add('seleccionada');
                 naveSeleccionada = nave.querySelector('img').alt;
-                    })}
-                );
-            
-                continuar.addEventListener('click', function() {
-                    if (naveSeleccionada === null) {
-                        alert('Por favor, selecciona una nave antes de continuar.');
-                    } else {
-                        localStorage.setItem('naveSeleccionada', naveSeleccionada);
-                        window.location.href = 'game.html';
-                    }
-                });
+            })
+        }
+        );
+
+        continuar.addEventListener('click', function () {
+            if (naveSeleccionada === null) {
+                alert('Por favor, selecciona una nave antes de continuar.');
+            } else {
+                localStorage.setItem('naveSeleccionada', naveSeleccionada);
+                window.location.href = 'game.html';
+            }
+        });
 
 
-                
-            </script>
-            </body>
+
+    </script>
+</body>
+
 </html>

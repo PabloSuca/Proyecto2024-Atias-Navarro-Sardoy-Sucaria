@@ -1,46 +1,48 @@
 body {
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     background-image: url(../Imagenes/fondoTemporal.jpg);
-    height: 100vh; 
-    width: 100vw; 
-    margin: 0; 
-    padding: 0; 
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
-.titulojuego{
-    background-image: url('../Imagenes/tituloprovisorio1.png'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
+.titulojuego {
+    background-image: url('../Imagenes/tituloprovisorio1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 20vw;
     height: auto;
-    margin:-13vh auto ;
+    margin: -13vh auto;
     padding: 0px;
-    
+
 }
-.perdisteTitulo { 
-    text-align: center; 
-    color: rgb(255, 255, 255); 
-    font-family: "Press Start 2P"; 
-    font-weight: normal; margin: 0px; 
-    background-color: rgba(0, 0, 0, 0); 
+
+.perdisteTitulo {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P";
+    font-weight: normal;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0);
     font-size: 2.5em;
-    transition: background-color 0.3s ease; 
-    position: fixed; 
-    left: 50%; 
+    transition: background-color 0.3s ease;
+    position: fixed;
+    left: 50%;
     top: 40%;
     transform: translate(-50%, -50%);
 }
 
 .botonVolver {
-    padding: 10px 20px; 
+    padding: 10px 20px;
     font-family: "Press Start 2P";
     font-size: 1em;
-    color: rgb(0, 0, 0); 
-    background-color: #ffffff; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
-    position: fixed; 
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -48,71 +50,72 @@ body {
 }
 
 
-.board{
-    position:relative;
+.board {
+    position: relative;
     margin-top: 2vh;
-    width:37.5vw;
-    border:solid 2px rgb(255, 255, 255);
-    display:flex;
+    width: 37.5vw;
+    border: solid 2px rgb(255, 255, 255);
+    display: flex;
     flex-wrap: wrap;
     background-image: url(../Imagenes/fondoBoard.jpg);
-    margin: 10vh auto; 
+    margin: 10vh auto;
     height: 83vh;
 }
 
 
 
-.board div{
-    width:2.5vw;
-    height:2.5vw;
-    border:solid 1px transparent;
+.board div {
+    width: 2.5vw;
+    height: 2.5vw;
+    border: solid 1px transparent;
     box-sizing: border-box;
 }
 
 
 .disparador-nave1 {
-    width: 10vw; 
-    height: 10vh; 
-    background-image: url('../Imagenes/nave1.png'); 
-    background-size: cover; 
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../Imagenes/nave1.png');
+    background-size: cover;
 }
 
 .disparador-nave2 {
-    width: 10vw; 
-    height: 10vh; 
-    background-image: url('../Imagenes/nave2.png'); 
-    background-size: cover; 
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../Imagenes/nave2.png');
+    background-size: cover;
 }
 
 .disparador-nave3 {
-    width: 10vw; 
-    height: 10vh; 
-    background-image: url('../Imagenes/nave3.png'); 
+    width: 10vw;
+    height: 10vh;
+    background-image: url('../Imagenes/nave3.png');
     background-size: cover;
 }
 
 
 
-.enemigo{ 
+.enemigo {
     background-image: url(../Imagenes/naveEnemiga.png);
     background-size: cover;
-    background-repeat: no-repeat; 
-    width: 2.5vw; 
-    height: 2.5vh;   }
+    background-repeat: no-repeat;
+    width: 2.5vw;
+    height: 2.5vh;
+}
 
 
 
-.laser{
+.laser {
     background-image: url(../Imagenes/disparoLaser.png);
 }
 
-.explotar{
+.explotar {
     background-image: url(../Imagenes/explotar.png);
 }
 
-.results{
+.results {
     font-family: "Press Start 2P";
-    text-align: center ;
+    text-align: center;
     color: rgb(255, 255, 255);
     font-weight: normal;
     margin: 1vh;
@@ -120,6 +123,6 @@ body {
     border: none;
     font-size: 3vh;
     margin-left: 63vh;
-    position:relative;
-    top:8vh;
+    position: relative;
+    top: 8vh;
 }

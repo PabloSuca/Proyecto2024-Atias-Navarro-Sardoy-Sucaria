@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>Space Invaders</title>
-        <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="utf-8">
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
 
-        <style>
-            @font-face {
-                font-family: 'Press Start 2P';
-                src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
-                        url('../Fuente/PressStart2P-Regular.ttf') format('woff');
-            }
-    
-            body {
-                font-family: 'Press Start 2P', Arial;
-            }
-        </style>
-    </head>
-    
-    <body>
-        <img class="elegirnombre" src="../Imagenes/tituloprovisorio1.png" alt="Titulo del juego" > 
+    <style>
+        @font-face {
+            font-family: 'Press Start 2P';
+            src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
+                url('../Fuente/PressStart2P-Regular.ttf') format('woff');
+        }
+
+        body {
+            font-family: 'Press Start 2P', Arial;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="elegirnombre" src="../Imagenes/tituloprovisorio1.png" alt="Titulo del juego">
     <ul>
-        <h2><textoNombre>Antes de jugar ingresa tu nombre</textNombre></h2>
+        <h2>
+            <textoNombre>Antes de jugar ingresa tu nombre</textNombre>
+        </h2>
         <br>
-        <h4><textoNombre>Máximo 4 caracteres</textNombre></h4>
+        <h4>
+            <textoNombre>Máximo 4 caracteres</textNombre>
+        </h4>
         <br>
         <br>
         <form id="formulario" action="elegirNave.html">
@@ -32,10 +36,10 @@
             <input type="text" id="nombre" name="nombre" maxlength="4" class="input-nombre"><br><br>
             <span id="error-nombre" style="color: red; display: none;">Por favor, ingresa tu nombre.</span><br><br>
             <input type="submit" value="Continuar" class="input-continuar">
-        </form>   <!--Formulario para ingresar el nombre del jugador-->
+        </form> <!--Formulario para ingresar el nombre del jugador-->
 
         <script>
-            document.getElementById('formulario').addEventListener('submit', function(event) {
+            document.getElementById('formulario').addEventListener('submit', function (event) {
                 var nombre = document.getElementById('nombre').value;
                 var valordelnombre = nombre;
                 localStorage.setItem('nombre', valordelnombre);
@@ -44,26 +48,26 @@
                     var errorNombre = document.getElementById('error-nombre');
                     errorNombre.style.display = 'inline';
                     errorNombre.classList.add('fade-out');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         errorNombre.style.display = 'none';
                         errorNombre.classList.remove('fade-out');
                     }, 3000);
                 }
             });
-        </script>  <!--Mensaje de error al no introducir ningun caracter-->
+        </script> <!--Mensaje de error al no introducir ningun caracter-->
         <br>
         <br>
         <br>
         <h2><a href="index.html"><button>Volver al menu</button></a></h2>
     </ul>
-    
-    </body>
-    <div class="bg"></div>
 
-    <div class="star-field">
+</body>
+<div class="bg"></div>
+
+<div class="star-field">
     <div class="layer"></div>
     <div class="layer"></div>
-    <div class="layer"></div>  <!--Fondo de la pantalla-->
+    <div class="layer"></div> <!--Fondo de la pantalla-->
 
 
-    </html>
+</html>
