@@ -5,10 +5,18 @@
         <title>Star Invaders</title>
         <link rel="icon" href="../Imagenes/icon.ico">
         <link rel="stylesheet" href="style.css">
-        <!-- Links Fuente Press Start 2P -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        
+        <style>
+            @font-face {
+                font-family: 'Press Start 2P';
+                src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
+                        url('../Fuente/PressStart2P-Regular.ttf') format('woff');
+            }
+    
+            body {
+                font-family: 'Press Start 2P', Arial;
+            }
+        </style>
 
     
     
@@ -26,13 +34,13 @@
         <h1><a href="comojugar.html"><button>COMO JUGAR</button></h1>
 
             
-
+ 
     </body>
     <div class="bg"></div>
     <div class="star-field">
     <div class="layer"></div>
     <div class="layer"></div>
-    <div class="layer"></div>
+    <div class="layer"></div>  <!--Fondo de la pantalla-->
 
     
     </html>

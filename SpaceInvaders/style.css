@@ -1,7 +1,7 @@
 @font-face {
     
-    font-family: "Press Start 2P", system-ui;
-    src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+    font-family: "Press Start 2P";
+    src: url("../Fuentes/PressStart2P-Regular.ttf");
     font-weight: 400;
     font-style: normal;
 }
@@ -202,13 +202,14 @@ body {
 .contenedor-naves {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .nave {
     flex: 1;
-    margin: 10vh;
-    width: 25vw;
-    height: 25vh;
+    margin: 5vh,2vw;
+    width: 30vw;
+    height: auto;
     text-align: center;
     border: 0.4vw solid #ffffff;
     display: flex;
@@ -278,6 +279,8 @@ to {
     opacity: 0.5;
 }
 }
+
+
 .star-field {
 position: fixed;
 top: 0;
