@@ -6,10 +6,17 @@
         <title>Space Invaders</title>
         <link rel="stylesheet" href="style.css">
 
-        <!-- Links Fuente Press Start 2P -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <style>
+            @font-face {
+                font-family: 'Press Start 2P';
+                src: url('../Fuente/PressStart2P-Regular.ttf') format('woff2'),
+                        url('../Fuente/PressStart2P-Regular.ttf') format('woff');
+            }
+    
+            body {
+                font-family: 'Press Start 2P', Arial;
+            }
+        </style>
     </head>
     
     <body>
@@ -25,7 +32,7 @@
             <input type="text" id="nombre" name="nombre" maxlength="4" class="input-nombre"><br><br>
             <span id="error-nombre" style="color: red; display: none;">Por favor, ingresa tu nombre.</span><br><br>
             <input type="submit" value="Continuar" class="input-continuar">
-        </form>
+        </form>   <!--Formulario para ingresar el nombre del jugador-->
 
         <script>
             document.getElementById('formulario').addEventListener('submit', function(event) {
@@ -41,7 +48,7 @@
                     }, 3000);
                 }
             });
-        </script>
+        </script>  <!--Mensaje de error al no introducir ningun caracter-->
         <br>
         <br>
         <br>
@@ -54,7 +61,7 @@
     <div class="star-field">
     <div class="layer"></div>
     <div class="layer"></div>
-    <div class="layer"></div>
+    <div class="layer"></div>  <!--Fondo de la pantalla-->
 
 
     </html>
