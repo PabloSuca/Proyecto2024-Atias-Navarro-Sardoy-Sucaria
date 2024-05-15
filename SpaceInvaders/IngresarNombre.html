@@ -37,6 +37,8 @@
         <script>
             document.getElementById('formulario').addEventListener('submit', function(event) {
                 var nombre = document.getElementById('nombre').value;
+                var valordelnombre = nombre;
+                localStorage.setItem('nombre', valordelnombre);
                 if (nombre === '') {
                     event.preventDefault();
                     var errorNombre = document.getElementById('error-nombre');

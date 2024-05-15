@@ -216,27 +216,27 @@ function moverLaser(){ //La funcion que mueve los lasers
     laserindex -= boardtamaño
     squares[laserindex].classList.add('laser')
 
-    if(squares[laserindex].classList.contains('enemigo')){//Si toca el laser al enemigo
-    squares[laserindex].classList.remove('laser') //Se va el laser
-    squares[laserindex].classList.remove('enemigo') //Se va el enemigo
-    squares[laserindex].classList.add('explotar') 
+        if(squares[laserindex].classList.contains('enemigo')){//si toca el laser al enemigo
+            squares[laserindex].classList.remove('laser') //se va el laser
+            squares[laserindex].classList.remove('enemigo') //se va el enemigo
+            squares[laserindex].classList.add('explotar') //oppenheimer
 
-    setTimeout (() => squares[laserindex].classList.remove('explotar'), 600)//Remueve la explosion despues de 600 milisegundos
-    clearInterval(laserId) 
+            setTimeout (() => squares[laserindex].classList.remove('explotar'), 600)//remueve la explosion despues de 600 milisegundos
+            clearInterval(laserId) 
 
-    const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
-    navesEnemigasBorradas.push(naveEnemigaBorrada)
-    results++
-    resultDisplay.innerHTML = results
-    console.log(navesEnemigasBorradas) //Borrar todo una vez q se destruye, enemigos y lasers
+            const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
+            navesEnemigasBorradas.push(naveEnemigaBorrada)
+            results++
+            resultDisplay.innerHTML = results
+            localStorage.setItem('results', results);
+            console.log(navesEnemigasBorradas) //estos comandos son para borrar todo una vez q se destruye, enemigos y lasers
+        }
     }
-    }
-    if (e.key === 'ArrowUp'){
-    laserId = setInterval(moverLaser, 100) //Tiempo de movimiento laser
+        if (e.key === 'ArrowUp'){
+            laserId = setInterval(moverLaser, 100) //tiempo de movimiento laser
             }
         }
     }
-
 document.addEventListener('keydown', dispara)
 
 
