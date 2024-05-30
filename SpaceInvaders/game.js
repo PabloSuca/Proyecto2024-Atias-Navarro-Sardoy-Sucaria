@@ -2,7 +2,7 @@ const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
 const boardtamaño = 15
 const navesEnemigasBorradas = []
-const cooldownDisparo = 200; //Milisegundos
+const cooldownDisparo = 400; //Milisegundos
 let disparoindex = 187
 let enemigosId
 let vaDerecha = true
@@ -27,9 +27,9 @@ const squares = Array.from(document.querySelectorAll('.board div')) //Todos los 
 console.log(squares)
 
 let navesEnemigas = [
-    0, 1, 2, 3,
-    15, 16, 17, 18,
-    30, 31, 32, 33,
+    0, 1, 2, 3, 4,
+    15, 16, 17, 18, 19,
+    30, 31, 32, 33, 34
 ]
 
 function draw() {
@@ -74,23 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 );
-//REVISAR ESTA FUNCION
-function generarOleadaEnemigos() {
-    navesEnemigas = [];
-    navesEnemigasBorradas.length = 0;
-    for (let i = 0; i < boardtamaño; i++) {
-        for (let j = 0; j < boardtamaño; j++) {
-            if (i % 2 === 0 && j % 2 === 0) {
-                const index = i * boardtamaño + j;
-                navesEnemigas.push(index);
-            }
-        }
-    }
-    draw();
-}
-
-
-
 
 //La nave que dispara:
 
@@ -123,14 +106,8 @@ function moverdisparador(e) {  //Funcion para mover la nave, falta avanzarla
 document.addEventListener('keydown', moverdisparador)
 
 
-
-//REVISAR ESTA FUNCION
 function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
     console.log("Mover enemigos");
-
-    if (!navesEnemigas.some(index => !navesEnemigasBorradas.includes(index))) {
-        generarOleadaEnemigos(); //Genera una nueva oleada de enemigos
-    }
 
     if (gameOver) { //Si pierde o gana, se detiene
         return
@@ -138,9 +115,7 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
     const leftEdge = navesEnemigas[0] % boardtamaño === 0 //Bordes enemigos izq
     const rightEdge = navesEnemigas[navesEnemigas.length - 1] % boardtamaño === boardtamaño - 1 //Bordes enemigos der, que no se muevan a la derecha del borde
     remove();
-    if (navesEnemigas.filter(index => navesEnemigasBorradas.includes(index)).length === navesEnemigas.length) {
-        generarOleadaEnemigos();
-    }
+
 
     if (rightEdge && vaDerecha) { //Si tocan el borde derecho y van hacia la derecha, bajan
         for (let i = 0; i < navesEnemigas.length; i++) {
@@ -162,20 +137,20 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
         navesEnemigas[i] += direccion
     }
 
-    draw() //Reusamos la funcion draw
-
+    draw() 
     if (squares[disparoindex].classList.contains("enemigo")) { //Si tocan a la nave pierde
-        const resultDisplay = document.getElementById('resultDisplay');
-        resultDisplay.innerHTML = '<span class="perdisteTitulo">PERDISTE</span>';
-        clearInterval(enemigosId)
-        gameOver = true
-        const botonVolver = document.querySelector('.botonVolver');
-        botonVolver.style.display = 'block';
-        botonVolver.addEventListener('click', function () {
-            window.location.href = 'index.html';
-        }
-        );
+    document.getElementById('gameOverTitle').style.visibility = 'visible';
+    clearInterval(enemigosId)
+    gameOver = true
+    const botonVolver = document.querySelector('.botonVolver');
+    botonVolver.style.display = 'block';
+    botonVolver.addEventListener('click', function () {
+        window.location.href = 'index.html';
     }
+    );
+
+
+}
 
     const ultimaFila = boardtamaño * (boardtamaño - 1);  //Si las naves llegan al final, pierde
     if (navesEnemigas.some(index => index >= ultimaFila)) {
@@ -190,10 +165,33 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
         }
         );
     }
+
+
+    if (navesEnemigasBorradas.length === navesEnemigas.length) { // Verifica si todas las naves enemigas han sido destruidas
+        navesEnemigasBorradas.length = 0; // Reinicia el array de naves enemigas borradas
+        resetearEnemigos(); // Restablece las posiciones de las naves enemigas
+        }
 }
 
 
-enemigosId = setInterval(moverenemigos, 200) //Mueve a los enemigos cada 300 milisegundos
+enemigosId = setInterval(moverenemigos, 300) //Mueve a los enemigos cada 300 milisegundos
+
+function resetearEnemigos() {
+    for (let i = 0; i < navesEnemigas.length; i++) {
+        squares[navesEnemigas[i]].classList.remove('enemigo');
+    }
+
+    navesEnemigas.length = 0; // Clear the array
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 5; j++) {
+            const index = i * boardtamaño + j;
+            navesEnemigas.push(index);
+        }
+    }
+
+    draw();
+}
 
 function dispara(e) { //Funcion dispara a los enemigos desde la nave
 
@@ -208,33 +206,39 @@ function dispara(e) { //Funcion dispara a los enemigos desde la nave
         let laserindex = disparoindex
 
 
+let sonidoLaser = new Audio("../Sonidos/sonidoDisparoNave.wav")
+let sonidoExplosion = new Audio("../Sonidos/sonidoMuerteEnemigo.wav")
+function moverLaser() { //La funcion que mueve los lasers
 
-        function moverLaser() { //La funcion que mueve los lasers
+    if (gameOver) { //Si pierde o gana, se detiene
+    return
+    }
+    squares[laserindex].classList.remove('laser')
+    laserindex -= boardtamaño
+    squares[laserindex].classList.add('laser')
+    const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
+    if (naveEnemigaBorrada !== -1) {
+    if (squares[laserindex].classList.contains('enemigo')) {//si toca el laser al enemigo
+        squares[laserindex].classList.remove('laser') //se va el laser
+        squares[laserindex].classList.remove('enemigo') //se va el enemigo
+        squares[laserindex].classList.add('explotar')
+        sonidoExplosion.play(); 
 
-            if (gameOver) { //Si pierde o gana, se detiene
-                return
-            }
-            squares[laserindex].classList.remove('laser')
-            laserindex -= boardtamaño
-            squares[laserindex].classList.add('laser')
+    setTimeout(() => squares[laserindex].classList.remove('explotar'), 600)//remueve la explosion despues de 600 milisegundos
+    clearInterval(laserId)
 
-            if (squares[laserindex].classList.contains('enemigo')) {//si toca el laser al enemigo
-                squares[laserindex].classList.remove('laser') //se va el laser
-                squares[laserindex].classList.remove('enemigo') //se va el enemigo
-                squares[laserindex].classList.add('explotar') //oppenheimer
-
-                setTimeout(() => squares[laserindex].classList.remove('explotar'), 600)//remueve la explosion despues de 600 milisegundos
-                clearInterval(laserId)
-
-                const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
-                navesEnemigasBorradas.push(naveEnemigaBorrada)
-                results++
-                resultDisplay.innerHTML = results
-                localStorage.setItem('results', results);
-                console.log(navesEnemigasBorradas) //estos comandos son para borrar todo una vez q se destruye, enemigos y lasers
+                
+    navesEnemigasBorradas.push(naveEnemigaBorrada)
+    results++
+    resultDisplay.innerHTML = results
+    localStorage.setItem('results', results);
+    console.log(navesEnemigasBorradas) //estos comandos son para borrar todo una vez q se destruye, enemigos y lasers
             }
         }
+    }
+
         if (e.key === 'ArrowUp') {
+            sonidoLaser.play();
             laserId = setInterval(moverLaser, 100) //tiempo de movimiento laser
         }
     }
