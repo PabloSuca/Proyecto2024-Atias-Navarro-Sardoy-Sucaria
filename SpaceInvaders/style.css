@@ -18,7 +18,7 @@ body {
 }
 
 .imagenTitulo {
-    background-image: url('../Imagenes/tituloprovisorio1.png');
+    background-image: url('../Imagenes/titulo.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: 60vw;
@@ -28,7 +28,7 @@ body {
 }
 
 .elegirnombre {
-    background-image: url('../Imagenes/tituloprovisorio1.png');
+    background-image: url('../Imagenes/titulo.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: 25vw;
@@ -39,7 +39,7 @@ body {
 }
 
 .titulonave {
-    background-image: url('../Imagenes/tituloprovisorio1.png');
+    background-image: url('../Imagenes/titulo.png');
     background-size: cover;
     background-repeat: no-repeat;
     width: 25vw;
@@ -222,7 +222,7 @@ h6 {
 
 
 body {
-    background-image: url(..//Imagenes/fondo.jpg);
+    background-image: url(..//Imagenes/fondo.png);
     background-size: cover;
 }
 
@@ -261,7 +261,7 @@ img {
 
 
 .bg {
-    background: url(..//Imagenes/fondo.jpg) no-repeat;
+    background: url(..//Imagenes/fondo.png) no-repeat;
     background-size: cover;
     height: 100vh;
     width: 100vw;
