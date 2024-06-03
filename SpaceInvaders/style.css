@@ -6,9 +6,8 @@
     font-style: normal;
 }
 
-/*Cambiar imagen del cursor*/
+
 body {
-    cursor: url(../Imagenes/cursorLaser.png), auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,8 +57,6 @@ button {
     background-color: rgba(205, 0, 0, 0);
     border: none;
     font-size: 3vw;
-    /*Tamaño relativo al ancho de la pestaña, se utiliza Viewport Width (ancho del dispositivo*/
-    cursor: url(../Imagenes/cursorLaser.png), auto
 }
 
 button:hover {
@@ -116,7 +113,7 @@ margin: 0vh;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 1.2vw;
-cursor: url(../Imagenes/cursorLaser.png);}
+}
 
 titulocomo {
 text-align: center;
@@ -127,7 +124,7 @@ margin: 1vh;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 2vw;
-cursor: url(../Imagenes/cursorLaser.png);} 
+} 
 
 form {
     text-align: center;
@@ -147,7 +144,6 @@ form {
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid rgb(255, 255, 255);
     font-size: 2.5vw;
-    cursor: url(../Imagenes/cursorLaser.png);
 }
 
 .input-continuar {
@@ -159,7 +155,6 @@ form {
     background-color: rgba(213, 0, 0, 0);
     border: none;
     font-size: 2vw;
-    cursor: url(../Imagenes/cursorLaser.png);
 }
 
 textoNombre {
@@ -171,7 +166,6 @@ textoNombre {
     background-color: rgba(205, 0, 0, 0);
     border: none;
     font-size: 1.5vw;
-    cursor: url(../Imagenes/cursorLaser.png);
 }
 
 .logoScore {
@@ -193,7 +187,6 @@ tituloScore {
     background-color: rgba(205, 0, 0, 0);
     border: none;
     font-size: 2vw;
-    cursor: url(../Imagenes/cursorLaser.png); 
 }
 
 .tabla-container {
@@ -205,7 +198,6 @@ margin: 2vh;
 background-color: rgba(205, 0, 0, 0);
 border: none;
 font-size: 1.5vw;
-cursor: url(../Imagenes/cursorLaser.png); 
 }
 .fade-out {
     animation: fadeOut 5s forwards;
