@@ -43,8 +43,6 @@ function draw() {
 draw()
 
 // Al cargar la página del juego:
-
-
 function configurarJuego(naveSeleccionada) {
     console.log("Nave seleccionada:", naveSeleccionada);
 
@@ -85,6 +83,7 @@ function remove() { //funcion para remover los enemigos cuando se mueven
     }
 }
 
+squares[disparoindex].classList.add('disparador') // Hasta que unifiquemos con la imagen del las 3 naves
 
 function moverdisparador(e) {  //Funcion para mover la nave, falta avanzarla
 
@@ -112,8 +111,8 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
     if (gameOver) { //Si pierde o gana, se detiene
         return
     }
-    const leftEdge = navesEnemigas[0] % boardtamaño === 0 //Bordes enemigos izq
-    const rightEdge = navesEnemigas[navesEnemigas.length - 1] % boardtamaño === boardtamaño - 1 //Bordes enemigos der, que no se muevan a la derecha del borde
+    const leftEdge = navesEnemigas[0] % boardtamaño === 0 // Bordes enemigos izq
+    const rightEdge = navesEnemigas[navesEnemigas.length - 1] % boardtamaño === boardtamaño - 1 // Bordes enemigos der, que no se muevan a la derecha del borde
     remove();
 
 
@@ -142,6 +141,7 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
     document.getElementById('gameOverTitle').style.visibility = 'visible';
     clearInterval(enemigosId)
     gameOver = true
+    guardarPuntajeFinal();
     const botonVolver = document.querySelector('.botonVolver');
     botonVolver.style.display = 'block';
     botonVolver.addEventListener('click', function () {
@@ -158,6 +158,7 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
         resultDisplay.innerHTML = '<span class="perdisteTitulo">PERDISTE</span>';
         clearInterval(enemigosId)
         gameOver = true
+        guardarPuntajeFinal();
         const botonVolver = document.querySelector('.botonVolver');
         botonVolver.style.display = 'block';
         botonVolver.addEventListener('click', function () {
@@ -174,7 +175,7 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
 }
 
 
-enemigosId = setInterval(moverenemigos, 300) //Mueve a los enemigos cada 300 milisegundos
+enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 300 milisegundos
 
 function resetearEnemigos() {
     for (let i = 0; i < navesEnemigas.length; i++) {
@@ -227,7 +228,7 @@ function moverLaser() { //La funcion que mueve los lasers
     setTimeout(() => squares[laserindex].classList.remove('explotar'), 600)//remueve la explosion despues de 600 milisegundos
     clearInterval(laserId)
 
-                
+
     navesEnemigasBorradas.push(naveEnemigaBorrada)
     results++
     resultDisplay.innerHTML = results
@@ -245,5 +246,70 @@ function moverLaser() { //La funcion que mueve los lasers
 }
 document.addEventListener('keydown', dispara)
 
+function guardarPuntajeFinal() {
+    console.log("Guardando puntaje final...");
+    localStorage.setItem('puntajeFinal', results);
+    guardarPuntaje();
+}
 
+function guardarPuntaje() {
+    console.log("Guardando puntaje..."); // Mensaje para verificar que se está guardando el puntaje
+    let nombre = localStorage.getItem('nombre') || "" // Obtiene el nombre ingresado por el usuario
+    let puntaje = parseInt(localStorage.getItem('puntajeFinal')) || 0; // Obtiene el puntaje del juego
 
+    // Buscar el número de jugadores ya registrados
+    const numeroJugadores = parseInt(localStorage.getItem('numeroJugadores')) || 0;
+
+    // Agrega el jugador nuevo al localStorage
+    localStorage.setItem(`jugador${numeroJugadores + 1}_nombre`, nombre);
+    localStorage.setItem(`jugador${numeroJugadores + 1}_puntaje`, puntaje.toString());
+
+    // Actualiza el número de jugadores registrados
+    localStorage.setItem("numeroJugadores", numeroJugadores + 1);
+
+}
+
+function mostrarPuntaje() {
+    console.log("Mostrando puntaje..."); // Mensaje para verificar que se está mostrando el puntaje
+    const tabla = document.querySelector('table'); // Crear tabla
+    const tbody = tabla.querySelector('tbody'); // Crear cuerpo de la tabla
+
+    tbody.innerHTML = ''; // Limpiar la tabla
+
+    // Buscar el número de jugadores ya registrados en el localStorage
+    const numeroJugadores = parseInt(localStorage.getItem('numeroJugadores')) || 0;
+
+    // Crear el array para almacenar los datos de los jugadores
+    const jugadores = [];
+
+    // Recorrer los jugadores registrados en el array
+    for (let i = 1; i <= numeroJugadores; i++) {
+        // Obtener los datos del jugador
+        const nombre = localStorage.getItem(`jugador${i}_nombre`);
+        const puntaje = parseInt(localStorage.getItem(`jugador${i}_puntaje`));
+
+        // Agregar los datos del jugador al array
+        jugadores.push({ nombre, puntaje });
+    }
+
+    // Ordenar los jugadores por puntaje
+    jugadores.sort((a, b) => b.puntaje - a.puntaje);
+
+    // Mostrar los primeros 5 jugadores en la tabla
+    for (let i = 0; i < 5; i++) {
+        if (i >= jugadores.length) {
+            break;
+        }
+        const { nombre, puntaje } = jugadores[i];
+
+        // Crear una fila en la tabla
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${nombre}</td>
+            <td>${puntaje}</td>
+        `;
+
+        // Agregar la fila a la tabla
+        tbody.appendChild(fila);
+    }
+}

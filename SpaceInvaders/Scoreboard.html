@@ -20,60 +20,28 @@
             font-family: 'Press Start 2P', Arial;
         }
     </style>
-
-    <style>
-        /* Estilos para la tabla */
-        #tablaDatos {
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            /* Ajusta el tamaño de la fuente */
-            font-family: 'Press Start 2P', cursive;
-            /* Ajusta la fuente */
-            width: 20%;
-            /* Ajusta el ancho de la tabla */
-            margin: 0 auto;
-            /* Centra la tabla horizontalmente */
-        }
-
-        /* Estilos para las celdas de la tabla */
-        #tablaDatos td {
-            padding: 10px;
-            /* Ajusta el espacio alrededor del texto en las celdas */
-            text-align: center;
-            /* Centra el texto horizontalmente */
-        }
-    </style>
+    <script src = "./game.js"></script>
 </head>
 
 <body>
 
-    <img width="400" height="125" src="../Imagenes/titulo.png" alt="Titulo del juego">
+    <img class="logoScore" src="../Imagenes/titulo.png" alt="Titulo del juego">
+    <h2><tituloScore>MEJORES PUNTUACIONES</tituloScore></h2>
+    
+    <div class="tabla-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Jugador|</th>
+                <th>Puntaje</th>
+            </tr>
+            <br>
+        </thead>
+        <tbody></tbody>
+        </table>
+        
+    </div>
 
-    <table id="tablaDatos">
-        <tr>
-            <td id="nombreGuardado"></td>
-            <td id="resultsGuardados"></td>
-        </tr>
-    </table>
-
-    <script>
-        // Función para obtener y mostrar los datos guardados
-        function mostrarDatosGuardados() {
-            // Recuperar el nombre almacenado en localStorage
-            const nombreGuardado = localStorage.getItem('nombre');
-
-            // Recuperar los resultados almacenados en localStorage
-            const resultsGuardados = localStorage.getItem('results');
-
-            // Mostrar los datos guardados en los elementos HTML correspondientes
-            document.getElementById('nombreGuardado').textContent = ` ${nombreGuardado || 'No hay nombre guardado'}`;
-            document.getElementById('resultsGuardados').textContent = ` ${resultsGuardados || 'No hay resultados guardados'}`;
-        }
-
-        // Llamar a la función para mostrar los datos guardados cuando la página se cargue
-        window.onload = mostrarDatosGuardados;
-    </script>
     <br>
     <br>
     <h2><a href="index.html"><button>Volver al menu</button></a></h2>
@@ -87,6 +55,7 @@
         <div class="layer"></div>
     </div>
 
+    <script> mostrarPuntaje() </script>
 </body>
 
 </html>

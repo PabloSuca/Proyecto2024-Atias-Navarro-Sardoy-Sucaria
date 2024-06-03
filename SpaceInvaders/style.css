@@ -108,28 +108,26 @@ button::after {
 
 
 textocomo {
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-family: "Press Start 2P";
-    font-weight: normal;
-    margin: 1vh;
-    background-color: rgba(205, 0, 0, 0);
-    border: none;
-    font-size: 1.5vw;
-    cursor: url(../Imagenes/cursorLaser.png);
-}
+text-align: left;
+color: rgb(255, 255, 255);
+font-family: "Press Start 2P";
+font-weight: normal;
+margin: 0vh;
+background-color: rgba(205, 0, 0, 0);
+border: none;
+font-size: 1.2vw;
+cursor: url(../Imagenes/cursorLaser.png);}
 
 titulocomo {
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-family: "Press Start 2P";
-    font-weight: normal;
-    margin: 1vh;
-    background-color: rgba(205, 0, 0, 0);
-    border: none;
-    font-size: 1.5vw;
-    cursor: url(../Imagenes/cursorLaser.png);
-}
+text-align: center;
+color: rgb(255, 255, 255);
+font-family: "Press Start 2P";  
+font-weight: normal;
+margin: 1vh;
+background-color: rgba(205, 0, 0, 0);
+border: none;
+font-size: 2vw;
+cursor: url(../Imagenes/cursorLaser.png);} 
 
 form {
     text-align: center;
@@ -176,6 +174,39 @@ textoNombre {
     cursor: url(../Imagenes/cursorLaser.png);
 }
 
+.logoScore {
+    background-image: url('../Imagenes/tituloprovisorio1.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    width: 40vw;
+    height:auto;
+    margin:1vh auto  ;
+    padding: 0px;
+    }
+
+tituloScore {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P";
+    font-weight: normal;
+    margin: 0vh;
+    background-color: rgba(205, 0, 0, 0);
+    border: none;
+    font-size: 2vw;
+    cursor: url(../Imagenes/cursorLaser.png); 
+}
+
+.tabla-container {
+text-align: center;
+color: rgb(255, 255, 255);
+font-family: "Press Start 2P";
+font-weight: normal;
+margin: 2vh;
+background-color: rgba(205, 0, 0, 0);
+border: none;
+font-size: 1.5vw;
+cursor: url(../Imagenes/cursorLaser.png); 
+}
 .fade-out {
     animation: fadeOut 5s forwards;
 }
