@@ -163,7 +163,7 @@ function moverenemigos() {
         const botonVolver = document.querySelector('.botonVolver');
         botonVolver.style.display = 'block';
         botonVolver.addEventListener('click', function () {
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
         }
     );
 }
@@ -178,7 +178,7 @@ function moverenemigos() {
         const botonVolver = document.querySelector('.botonVolver');
         botonVolver.style.display = 'block';
         botonVolver.addEventListener('click', function () {
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
         }
     );
 }
