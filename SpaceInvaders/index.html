@@ -24,20 +24,39 @@
 <body>
     <img class="imagenTitulo" src="../Imagenes/titulo.png" alt="Titulo del juego">
 
-    <h1><a href="ingresarNombre.html"><button>JUGAR</button></h1>
+    <h1><button><a id="botonesMenu" href="ingresarNombre.html">JUGAR</a></button></h1>
     <br>
     <br>
-    <h1><a href="scoreboard.html"><button>SCOREBOARD</button></h1>
+    <h1><button><a id="botonesMenu" href="scoreboard.html">SCOREBOARD</a></button></h1>
     <br>
     <br>
-    <h1><a href="comoJugar.html"><button>COMO JUGAR</button></h1>
+    <h1><button><a id="botonesMenu" href="comoJugar.html">COMO JUGAR</a></button></h1>
+    <br>
+    
+    <input type = "range" id = "controlVolumen" min = "0" max = "1" step = "0.1" value = "0.5">
 
+    <audio id="musica" autoplay loop>
+        <source src="../Musica/menu.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    document.getElementById('controlVolumen').addEventListener('input', function(event) {
+        event.stopPropagation();
+        const musica = document.getElementById('musica');
+        musica.volume = this.value;
+    });
+
+    document.getElementById('controlVolumen').addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+    </script>
+
+    <div class="bg"></div>
+    <div class="star-field">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div> <!--Fondo de la pantalla-->
+    </div>
 </body>
-<div class="bg"></div>
-<div class="star-field">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div> <!--Fondo de la pantalla-->
-
 
 </html>

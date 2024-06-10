@@ -2,7 +2,7 @@ const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
 const boardtamaño = 15
 const navesEnemigasBorradas = []
-const cooldownDisparo = 400; //Milisegundos
+const cooldownDisparo = 400; 
 let disparoindex = 187
 let enemigosId
 let vaDerecha = true
@@ -12,8 +12,10 @@ let ultimoDisparo = 0
 let gameOver = false
 
 
-
-//Se crean los divs que representan el fondo del juego, las casillas
+/** 
+*Crea los divs que representan el fondo del juego, las casillas.
+* @function
+*/
 for (let i = 0; i < boardtamaño * boardtamaño; i++) {
     const square = document.createElement('div')
     board.appendChild(square)
@@ -22,16 +24,19 @@ for (let i = 0; i < boardtamaño * boardtamaño; i++) {
 
 
 //Se crean los arreglos
-
-const squares = Array.from(document.querySelectorAll('.board div')) //Todos los divs, por eso usamos All
+const squares = Array.from(document.querySelectorAll('.board div')) //Todos los divs, por eso usamos all
 console.log(squares)
 
 let navesEnemigas = [
-    0, 1, 2, 3, 4,
-    15, 16, 17, 18, 19,
-    30, 31, 32, 33, 34
+0, 1, 2, 3, 4,
+15, 16, 17, 18, 19,
+30, 31, 32, 33, 34
 ]
 
+/**
+* Dibuja las naves enemigas en el tablero.
+* @function draw
+*/
 function draw() {
     for (let i = 0; i < navesEnemigas.length; i++) {
         if (!navesEnemigasBorradas.includes(i)) {    //Chequear si existe, y si no, añadimos la clase
@@ -42,7 +47,11 @@ function draw() {
 
 draw()
 
-// Al cargar la página del juego:
+/**
+* Configura el juego según la nave seleccionada.
+* @function configurarJuego
+* @param {string} naveSeleccionada - Nombre de la nave seleccionada por el jugador.
+*/
 function configurarJuego(naveSeleccionada) {
     console.log("Nave seleccionada:", naveSeleccionada);
 
@@ -67,16 +76,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Verifica si hay una selección de nave en localStorage
     const naveSeleccionada = localStorage.getItem('naveSeleccionada');
     if (naveSeleccionada) {
-        // Utiliza la selección de la nave para configurar el juego
+    // Utiliza la selección de la nave para configurar el juego
         configurarJuego(naveSeleccionada);
     }
 }
 );
 
-//La nave que dispara:
-
-squares[disparoindex].classList.add('disparador') //Hasta que unifiquemos con la imagen del las 3 naves
-
+/**
+* Remueve las naves enemigas del tablero.
+* @function remove
+*/
 function remove() { //funcion para remover los enemigos cuando se mueven
     for (let i = 0; i < navesEnemigas.length; i++) {
         squares[navesEnemigas[i]].classList.remove('enemigo')
@@ -85,9 +94,14 @@ function remove() { //funcion para remover los enemigos cuando se mueven
 
 squares[disparoindex].classList.add('disparador') // Hasta que unifiquemos con la imagen del las 3 naves
 
+/**
+* Mueve la nave disparadora según la tecla presionada.
+* @function moverdisparador
+* @param {Event} e - Evento de teclado.
+*/
 function moverdisparador(e) {  //Funcion para mover la nave, falta avanzarla
 
-    if (gameOver) { //Si pierde o gana, se detiene
+    if (gameOver) { //Si pierde, se detiene el juego
         return
     }
     squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`) //que cuando se mueva la nave, se vaya borrando lo anterior
@@ -104,11 +118,14 @@ function moverdisparador(e) {  //Funcion para mover la nave, falta avanzarla
 
 document.addEventListener('keydown', moverdisparador)
 
-
-function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
+/**
+* Maneja el movimiento de los enemigos.
+* @function moverenemigos
+*/
+function moverenemigos() { 
     console.log("Mover enemigos");
 
-    if (gameOver) { //Si pierde o gana, se detiene
+    if (gameOver) { //Si pierde, se detiene el juego
         return
     }
     const leftEdge = navesEnemigas[0] % boardtamaño === 0 // Bordes enemigos izq
@@ -138,18 +155,16 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
 
     draw() 
     if (squares[disparoindex].classList.contains("enemigo")) { //Si tocan a la nave pierde
-    document.getElementById('gameOverTitle').style.visibility = 'visible';
-    clearInterval(enemigosId)
-    gameOver = true
-    guardarPuntajeFinal();
-    const botonVolver = document.querySelector('.botonVolver');
-    botonVolver.style.display = 'block';
-    botonVolver.addEventListener('click', function () {
+        document.getElementById('gameOverTitle').style.visibility = 'visible';
+        clearInterval(enemigosId)
+        gameOver = true
+        guardarPuntajeFinal();
+        const botonVolver = document.querySelector('.botonVolver');
+        botonVolver.style.display = 'block';
+        botonVolver.addEventListener('click', function () {
         window.location.href = 'index.html';
-    }
+        }
     );
-
-
 }
 
     const ultimaFila = boardtamaño * (boardtamaño - 1);  //Si las naves llegan al final, pierde
@@ -162,27 +177,31 @@ function moverenemigos() { //Funcion que maneja el movimiento de los enemigos
         const botonVolver = document.querySelector('.botonVolver');
         botonVolver.style.display = 'block';
         botonVolver.addEventListener('click', function () {
-            window.location.href = 'index.html';
+        window.location.href = 'index.html';
         }
-        );
-    }
+    );
+}
 
 
     if (navesEnemigasBorradas.length === navesEnemigas.length) { // Verifica si todas las naves enemigas han sido destruidas
         navesEnemigasBorradas.length = 0; // Reinicia el array de naves enemigas borradas
         resetearEnemigos(); // Restablece las posiciones de las naves enemigas
         }
-}
+    }
 
 
-enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 300 milisegundos
+enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 100 milisegundos
 
+/**
+* Restaura las posiciones de las naves enemigas.
+* @function resetearEnemigos
+*/
 function resetearEnemigos() {
     for (let i = 0; i < navesEnemigas.length; i++) {
         squares[navesEnemigas[i]].classList.remove('enemigo');
     }
 
-    navesEnemigas.length = 0; // Clear the array
+    navesEnemigas.length = 0; //Limpia el areglo de naves enemigas
 
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 5; j++) {
@@ -194,6 +213,11 @@ function resetearEnemigos() {
     draw();
 }
 
+/**
+* Dispara a los enemigos desde la nave.
+* @function dispara
+* @param {Event} e - Evento de teclado.
+*/
 function dispara(e) { //Funcion dispara a los enemigos desde la nave
 
     if (gameOver) { //Si pierde o gana, se detiene
@@ -202,13 +226,17 @@ function dispara(e) { //Funcion dispara a los enemigos desde la nave
     const currentTime = new Date().getTime(); // Obtener el tiempo actual
     if (currentTime - ultimoDisparo >= cooldownDisparo) { // Verificar si ha pasado suficiente tiempo desde el último disparo
         ultimoDisparo = currentTime; // Actualizar el tiempo del último disparo
-
         let laserId
         let laserindex = disparoindex
 
 
 let sonidoLaser = new Audio("../Sonidos/sonidoDisparoNave.wav")
 let sonidoExplosion = new Audio("../Sonidos/sonidoMuerteEnemigo.wav")
+
+/**
+* Mueve el láser disparado por la nave.
+* @function moverLaser
+*/
 function moverLaser() { //La funcion que mueve los lasers
 
     if (gameOver) { //Si pierde o gana, se detiene
@@ -233,7 +261,7 @@ function moverLaser() { //La funcion que mueve los lasers
     results++
     resultDisplay.innerHTML = results
     localStorage.setItem('results', results);
-    console.log(navesEnemigasBorradas) //estos comandos son para borrar todo una vez q se destruye, enemigos y lasers
+    console.log(navesEnemigasBorradas) //Borrar todo una vez q se destruye, enemigos y lasers
             }
         }
     }
@@ -246,12 +274,19 @@ function moverLaser() { //La funcion que mueve los lasers
 }
 document.addEventListener('keydown', dispara)
 
+/**
+* Guarda el puntaje final en localStorage.
+* @function guardarPuntajeFinal
+*/
 function guardarPuntajeFinal() {
     console.log("Guardando puntaje final...");
     localStorage.setItem('puntajeFinal', results);
     guardarPuntaje();
 }
-
+/**
+* Guarda el puntaje del jugador en localStorage.
+* @function guardarPuntaje
+*/
 function guardarPuntaje() {
     console.log("Guardando puntaje..."); // Mensaje para verificar que se está guardando el puntaje
     let nombre = localStorage.getItem('nombre') || "" // Obtiene el nombre ingresado por el usuario
@@ -269,6 +304,10 @@ function guardarPuntaje() {
 
 }
 
+/**
+* Muestra el puntaje de los jugadores en una tabla.
+* @function mostrarPuntaje
+*/
 function mostrarPuntaje() {
     console.log("Mostrando puntaje..."); // Mensaje para verificar que se está mostrando el puntaje
     const tabla = document.querySelector('table'); // Crear tabla
