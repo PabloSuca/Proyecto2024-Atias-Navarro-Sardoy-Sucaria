@@ -48,6 +48,9 @@ body {
 
 }
 
+a:visited {
+    color: inherit; 
+} /* Para que los botones del menu no sean violetas*/
 
 button {
     text-align: center;

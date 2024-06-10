@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 );
 
+
 /**
 * Remueve las naves enemigas del tablero.
 * @function remove
@@ -350,5 +351,18 @@ function mostrarPuntaje() {
 
         // Agregar la fila a la tabla
         tbody.appendChild(fila);
+    }
+}
+
+window.onload = function() {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    var botones = document.getElementsByClassName('boton-nave');
+    for(var i = 0; i < botones.length; i++) {
+        botones[i].style.display = "block";
+    }
+
+    document.getElementById('botonIzquierda').addEventListener('click', moverIzquierda);
+    document.getElementById('botonDerecha').addEventListener('click', moverDerecha);
+    document.getElementById('botonDisparar').addEventListener('click', disparar);
     }
 }

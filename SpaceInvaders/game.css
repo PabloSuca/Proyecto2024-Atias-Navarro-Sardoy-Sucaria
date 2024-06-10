@@ -126,3 +126,12 @@ body {
     position: relative;
     top: 8vh;
 }
+
+.boton-nave {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+.boton-nave {
+display: block;
+}
+}
