@@ -2,7 +2,7 @@ const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
 const boardtamaño = 15
 const navesEnemigasBorradas = []
-const cooldownDisparo = 200; 
+const cooldownDisparo = 100; 
 let disparoindex = 187
 let enemigosId
 let vaDerecha = true
@@ -154,11 +154,12 @@ function moverenemigos() {
         navesEnemigas[i] += direccion
     }
 
-    draw() 
+    draw();
+
     if (squares[disparoindex].classList.contains("enemigo")) { //Si tocan a la nave pierde
         document.getElementById('gameOverTitle').style.visibility = 'visible';
         clearInterval(enemigosId)
-        gameOver = true
+        gameOver = true;
         guardarPuntajeFinal();
         const botonVolver = document.querySelector('.botonVolver');
         botonVolver.style.display = 'block';
@@ -172,8 +173,8 @@ function moverenemigos() {
     if (navesEnemigas.some(index => index >= ultimaFila)) {
         const resultDisplay = document.getElementById('resultDisplay');
         resultDisplay.innerHTML = '<span class="perdisteTitulo">PERDISTE</span>';
-        clearInterval(enemigosId)
-        gameOver = true
+        clearInterval(enemigosId);
+        gameOver = true;
         guardarPuntajeFinal();
         const botonVolver = document.querySelector('.botonVolver');
         botonVolver.style.display = 'block';
@@ -183,12 +184,11 @@ function moverenemigos() {
     );
 }
 
-
-    if (navesEnemigasBorradas.length === navesEnemigas.length) { // Verifica si todas las naves enemigas han sido destruidas
-        navesEnemigasBorradas.length = 0; // Reinicia el array de naves enemigas borradas
-        resetearEnemigos(); // Restablece las posiciones de las naves enemigas
-        }
+if (navesEnemigasBorradas.length === navesEnemigas.length) { // Verifica si todas las naves enemigas han sido destruidas
+    navesEnemigasBorradas.length = 0; // Reinicia el array de naves enemigas borradas
+    resetearEnemigos(); // Restablece las posiciones de las naves enemigas
     }
+}
 
 
 enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 100 milisegundos
@@ -198,6 +198,7 @@ enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 100 mil
 * @function resetearEnemigos
 */
 function resetearEnemigos() {
+    gameOver=false;
     for (let i = 0; i < navesEnemigas.length; i++) {
         squares[navesEnemigas[i]].classList.remove('enemigo');
     }
@@ -212,6 +213,7 @@ function resetearEnemigos() {
     }
 
     draw();
+    
 }
 
 /**
