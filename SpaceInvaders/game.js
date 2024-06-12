@@ -2,7 +2,7 @@ const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
 const boardtamaño = 15
 const navesEnemigasBorradas = []
-const cooldownDisparo = 100; 
+const cooldownDisparo = 200; 
 let disparoindex = 187
 let enemigosId
 let vaDerecha = true
