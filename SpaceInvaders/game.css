@@ -52,8 +52,7 @@ body {
 
 .board {
     position: relative;
-    margin-top: 2vh;
-    width: 37.5vw;
+    width: 80vw;
     border: solid 2px rgb(255, 255, 255);
     display: flex;
     flex-wrap: wrap;
@@ -61,8 +60,12 @@ body {
     margin: 10vh auto;
     height: 83vh;
 }
-
-
+@media screen and (min-width: 600px) {
+    .board {
+        width: 37.5vw;
+        height: 83vh;
+    }
+}
 
 .board div {
     width: 2.5vw;
@@ -107,6 +110,9 @@ body {
 
 .laser {
     background-image: url(../Imagenes/disparoLaser.png);
+    background-size: contain; 
+    width: 2.5vw; 
+    height: 2.5vw;
 }
 
 .explotar {
@@ -126,12 +132,32 @@ body {
     position: relative;
     top: 8vh;
 }
+.controles-celu {
+    display: none; 
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
 
-.boton-nave {
-    display: none;
+.controles-celu button {
+    font-size: 20px;
+    padding: 10px;
+    margin: 0 5px;
+    border: black;
+    border-radius: 5px;
+    background-color:white;
+    color: #fff;
+    cursor: pointer;
 }
-@media screen and (max-width: 768px) {
-.boton-nave {
-display: block;
+
+.controles-celu button:active {
+    background-color: #555;
 }
+
+
+@media (max-width: 768px) {
+    .controles-celu {
+        display: block;
+    }
 }

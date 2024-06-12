@@ -29,22 +29,19 @@
     <div class="board"></div>
     <span id="gameOverTitle" class="perdisteTitulo" style="visibility: hidden;">PERDISTE</span>
     <button class="botonVolver" style="display: none;">Volver al inicio</button>
+    <div class="controles-celu">
+        <button id="btn-izquierda">←</button>
+        <button id="btn-disparar">↑</button>
+        <button id="btn-derecha">→</button>
+    </div>
     <script src="game.js"> </script>
     <script>
         var naveSeleccionada = localStorage.getItem('naveSeleccionada');
     </script>
-
-<button id="botonIzquierda" class="boton-nave">Izquierda</button>
-<button id="botonDerecha" class="boton-nave">Derecha</button>
-<button id="botonDisparar" class="boton-nave">Disparar</button>
-
     <audio id="musicaJuego" autoplay loop>
         <source src="../Musica/juego.mp3" type="audio/mpeg">
     </audio>
 
-    <audio id="musicaDerrota" preload="auto">
-        <source src="../Musica/perdiste.mp3" type="audio/mpeg">
-    </audio>
 </body>
 
 </html>

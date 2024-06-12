@@ -2,7 +2,7 @@ const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
 const boardtamaño = 15
 const navesEnemigasBorradas = []
-const cooldownDisparo = 400; 
+const cooldownDisparo = 250; 
 let disparoindex = 187
 let enemigosId
 let vaDerecha = true
@@ -354,15 +354,69 @@ function mostrarPuntaje() {
     }
 }
 
-window.onload = function() {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    var botones = document.getElementsByClassName('boton-nave');
-    for(var i = 0; i < botones.length; i++) {
-        botones[i].style.display = "block";
-    }
+//Función para austar el BoardSize
+function adjustBoardSize() {
+    const board = document.querySelector('.board');
+    const squares = Array.from(board.querySelectorAll('div'));
+    const boardWidth = board.clientWidth;
+    const squareSize = boardWidth / 15;
 
-    document.getElementById('botonIzquierda').addEventListener('click', moverIzquierda);
-    document.getElementById('botonDerecha').addEventListener('click', moverDerecha);
-    document.getElementById('botonDisparar').addEventListener('click', disparar);
-    }
+    squares.forEach(square => {
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+    });
+
+    const lasers = Array.from(document.querySelectorAll('.laser'));
+    lasers.forEach(laser => {
+        laser.style.width = `${squareSize}px`;
+        laser.style.height = `${squareSize}px`;
+    });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const naveSeleccionada = localStorage.getItem('naveSeleccionada');
+    if (naveSeleccionada) {
+        configurarJuego(naveSeleccionada);
+    }
+    adjustBoardSize();
+});
+
+window.addEventListener('resize', adjustBoardSize);
+
+
+//Botones de control para celulares:
+
+document.getElementById('btn-izquierda').addEventListener('click', () => {
+    if (!gameOver && disparoindex % boardtamaño !== 0) {
+        squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`);
+        disparoindex -= 1;
+        squares[disparoindex].classList.add('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`);
+    }
+});
+
+document.getElementById('btn-derecha').addEventListener('click', () => {
+    if (!gameOver && disparoindex % boardtamaño < boardtamaño - 1) {
+        squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`);
+        disparoindex += 1;
+        squares[disparoindex].classList.add('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`);
+    }
+});
+
+document.getElementById('btn-disparar').addEventListener('click', (e) => {
+    dispara({ key: 'ArrowUp' });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const naveSeleccionada = localStorage.getItem('naveSeleccionada');
+    if (naveSeleccionada) {
+        configurarJuego(naveSeleccionada);
+    }
+    adjustBoardSize();
+
+    
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        document.querySelector('.controles-moviles').style.display = 'block';
+    }
+});
+
+window.addEventListener('resize', adjustBoardSize);

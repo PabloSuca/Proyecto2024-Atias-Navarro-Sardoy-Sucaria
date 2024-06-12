@@ -47,10 +47,12 @@ body {
     padding: 0px;
 
 }
-
+a:link {
+    color: white; 
+}
 a:visited {
-    color: inherit; 
-} /* Para que los botones del menu no sean violetas*/
+    color: white; 
+} 
 
 button {
     text-align: center;
@@ -70,14 +72,10 @@ button::before {
     content: "";
     display: none;
     margin-left: 2.5vw;
-    /* Espacio entre el botón y la imagen */
     background-image: url(../Imagenes/imperioLogo.png);
     background-size: contain;
-    /* Tamaño de la imagen */
     width: 5vw;
-    /* Ancho de la imagen */
     height: 5vw;
-    /* Altura de la imagen */
     margin: -1vh auto;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
@@ -93,14 +91,10 @@ button::after {
     content: "";
     display: none;
     margin-left: 5vw;
-    /* Espacio entre el botón y la imagen */
     background-image: url(../Imagenes/alianzaLogo.png);
     background-size: contain;
-    /* Tamaño de la imagen */
     width: 5vw;
-    /* Ancho de la imagen */
     height: 5vw;
-    /* Altura de la imagen */
     margin: -1vh auto;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
@@ -268,7 +262,12 @@ img {
     justify-content: center;
     flex-wrap: wrap;
 }
-
+@media screen and (max-width: 600px) {
+    .contenedor-naves {
+    flex-direction: column;
+    align-items: center;
+    }
+}
 .nave {
     flex: 1;
     margin: 5vh, 2vw;
@@ -286,9 +285,8 @@ img {
 }
 
 .nave img {
-    width: 7.5vw;
-    height: 13vh;
-    display: block;
+    max-width: 100%; 
+    height: auto; 
 }
 
 
