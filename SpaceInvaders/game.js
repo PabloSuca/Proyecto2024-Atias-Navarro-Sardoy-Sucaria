@@ -2,7 +2,7 @@ const board = document.querySelector('.board')
 const resultDisplay = document.querySelector('.results')
 const boardtamaño = 15
 const navesEnemigasBorradas = []
-const cooldownDisparo = 250; 
+const cooldownDisparo = 200; 
 let disparoindex = 187
 let enemigosId
 let vaDerecha = true
@@ -254,7 +254,7 @@ function moverLaser() { //La funcion que mueve los lasers
         squares[laserindex].classList.add('explotar')
         sonidoExplosion.play(); 
 
-    setTimeout(() => squares[laserindex].classList.remove('explotar'), 600)//remueve la explosion despues de 600 milisegundos
+    setTimeout(() => squares[laserindex].classList.remove('explotar'), 300)//remueve la explosion despues de 600 milisegundos
     clearInterval(laserId)
 
 
