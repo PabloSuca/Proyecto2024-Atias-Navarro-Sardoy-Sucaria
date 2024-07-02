@@ -117,7 +117,7 @@ function moverdisparador(e) {  //Funcion mover la nave
     squares[disparoindex].classList.add('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`)
 }
 
-document.addEventListener('keydown', moverdisparador)
+document.addEventListener('keydown', moverdisparador) //Registra cualquier tecla tocada por el usuario
 
 /**
 * Maneja el movimiento de los enemigos.
@@ -184,12 +184,12 @@ function moverenemigos() {
     );
 }
 
+// Reseteo de oleadas de enemigos
 if (navesEnemigasBorradas.length === navesEnemigas.length) { // Verifica si todas las naves enemigas han sido destruidas
     navesEnemigasBorradas.length = 0; // Reinicia el array de naves enemigas borradas
     resetearEnemigos(); // Restablece las posiciones de las naves enemigas
     }
 }
-
 
 enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 100 milisegundos
 
@@ -250,16 +250,16 @@ function moverLaser() { //La funcion que mueve los lasers
     squares[laserindex].classList.add('laser')
     const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
     if (naveEnemigaBorrada !== -1) {
-    if (squares[laserindex].classList.contains('enemigo')) {//si toca el laser al enemigo
-        squares[laserindex].classList.remove('laser') //se va el laser
-        squares[laserindex].classList.remove('enemigo') //se va el enemigo
-        squares[laserindex].classList.add('explotar')//genera imagen de explotar
+    if (squares[laserindex].classList.contains('enemigo')) {//Si toca el laser al enemigo
+        squares[laserindex].classList.remove('laser') //Se va el laser
+        squares[laserindex].classList.remove('enemigo') //Se va el enemigo
+        squares[laserindex].classList.add('explotar')//Genera imagen de explotar
         sonidoExplosion.play(); 
 
     setTimeout(() => squares[laserindex].classList.remove('explotar'), 300)//remueve la explosion despues de 600 milisegundos
     clearInterval(laserId)
 
-
+    //Scoreboard en pantalla
     navesEnemigasBorradas.push(naveEnemigaBorrada)
     results++
     resultDisplay.innerHTML = results
@@ -356,7 +356,7 @@ function mostrarPuntaje() {
     }
 }
 
-//Función para austar el BoardSize / porque al cambiar el tamaño de la pantalla, se achichan los div
+//Función para austar el BoardSize / porque al cambiar el tamaño de la pantalla, se achichan los div 
 function adjustBoardSize() {
     const board = document.querySelector('.board');
     const squares = Array.from(board.querySelectorAll('div'));
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function () {
     adjustBoardSize();
 
     
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
+    if (/Mobi|Android/i.test(navigator.userAgent)) { //Verificacion de si es Celular
         document.querySelector('.controles-moviles').style.display = 'block';
     }
 });

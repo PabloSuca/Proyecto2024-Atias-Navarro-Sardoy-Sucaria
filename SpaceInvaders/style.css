@@ -47,7 +47,7 @@ body {
     padding: 0px;
 
 }
-a:link {
+a:link { /*Link siempre en blanco, no violeta*/
     color: white; 
 }
 a:visited {
@@ -128,7 +128,7 @@ border: none;
 font-size: 2vw;
 } 
 
-form {
+form { /*Formulario para nombre*/
     text-align: center;
     color: rgb(255, 255, 255);
     font-family: "Press Start 2P";
