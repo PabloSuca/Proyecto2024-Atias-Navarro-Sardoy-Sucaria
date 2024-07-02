@@ -24,7 +24,7 @@ for (let i = 0; i < boardtamaño * boardtamaño; i++) {
 
 
 //Se crean los arreglos
-const squares = Array.from(document.querySelectorAll('.board div')) //Todos los divs, por eso usamos all
+const squares = Array.from(document.querySelectorAll('.board div')) // Todos los divs, por eso usamos all
 console.log(squares)
 
 let navesEnemigas = [
@@ -39,7 +39,7 @@ let navesEnemigas = [
 */
 function draw() {
     for (let i = 0; i < navesEnemigas.length; i++) {
-        if (!navesEnemigasBorradas.includes(i)) {    //Chequear si existe, y si no, añadimos la clase
+        if (!navesEnemigasBorradas.includes(i)) {    // Chequear si existe, y si no, añadimos la clase
             squares[navesEnemigas[i]].classList.add('enemigo')
         }
     }
@@ -87,37 +87,37 @@ document.addEventListener('DOMContentLoaded', function () {
 * Remueve las naves enemigas del tablero.
 * @function remove
 */
-function remove() { //Funcion para remover los enemigos cuando se mueven
+function remove() { // Funcion para remover los enemigos cuando se mueven
     for (let i = 0; i < navesEnemigas.length; i++) {
         squares[navesEnemigas[i]].classList.remove('enemigo')
     }
 }
 
-squares[disparoindex].classList.add('disparador') //Añade la clase disparador al div seleccionado
+squares[disparoindex].classList.add('disparador') // Añade la clase disparador al div seleccionado
 
 /**
 * Mueve la nave disparadora según la tecla presionada.
 * @function moverdisparador
 * @param {Event} e - Evento de teclado
 */
-function moverdisparador(e) {  //Funcion mover la nave
+function moverdisparador(e) {  // Funcion mover la nave
 
-    if (gameOver) { //Si pierde, se detiene el juego
+    if (gameOver) { // Si pierde, se detiene el juego
         return
     }
-    squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`) //que cuando se mueva la nave, se vaya borrando lo anterior
+    squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`) // Que cuando se mueva la nave, se vaya borrando lo anterior
     switch (e.key) {
         case 'ArrowLeft':
-            if (disparoindex % boardtamaño !== 0) disparoindex -= 1 //Para que no se mueva mas a la izquierda del borde
+            if (disparoindex % boardtamaño !== 0) disparoindex -= 1 // Para que no se mueva mas a la izquierda del borde
             break
         case 'ArrowRight':
-            if (disparoindex % boardtamaño < boardtamaño - 1) disparoindex += 1 //Para que no se mueva a la derecha del borde, sino que vaya volviendo izq
+            if (disparoindex % boardtamaño < boardtamaño - 1) disparoindex += 1 // Para que no se mueva a la derecha del borde, sino que vaya volviendo izq
             break
     }
     squares[disparoindex].classList.add('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`)
 }
 
-document.addEventListener('keydown', moverdisparador) //Registra cualquier tecla tocada por el usuario
+document.addEventListener('keydown', moverdisparador) // Registra cualquier tecla tocada por el usuario
 
 /**
 * Maneja el movimiento de los enemigos.
@@ -126,7 +126,7 @@ document.addEventListener('keydown', moverdisparador) //Registra cualquier tecla
 function moverenemigos() { 
     console.log("Mover enemigos");
 
-    if (gameOver) { //Si pierde, se detiene el juego
+    if (gameOver) { // Si pierde, se detiene el juego
         return
     }
     const leftEdge = navesEnemigas[0] % boardtamaño === 0 // Bordes enemigos izq
@@ -134,7 +134,7 @@ function moverenemigos() {
     remove();
 
 
-    if (rightEdge && vaDerecha) { //Si tocan el borde derecho y van hacia la derecha, bajan
+    if (rightEdge && vaDerecha) { // Si tocan el borde derecho y van hacia la derecha, bajan
         for (let i = 0; i < navesEnemigas.length; i++) {
             navesEnemigas[i] += boardtamaño + 1
             direccion = -1
@@ -142,7 +142,7 @@ function moverenemigos() {
         }
     }
 
-    if (leftEdge && !vaDerecha) { //Si tocan el borde izquierdo y van hacia la izquierda, bajan
+    if (leftEdge && !vaDerecha) { // Si tocan el borde izquierdo y van hacia la izquierda, bajan
         for (let i = 0; i < navesEnemigas.length; i++) {
             navesEnemigas[i] += boardtamaño - 1
             direccion = 1
@@ -150,13 +150,13 @@ function moverenemigos() {
         }
     }
 
-    for (let i = 0; i < navesEnemigas.length; i++) { //Direccion de las naves
+    for (let i = 0; i < navesEnemigas.length; i++) { // Direccion de las naves
         navesEnemigas[i] += direccion
     }
 
     draw();
 
-    if (squares[disparoindex].classList.contains("enemigo")) { //1 Forma de perder, enemigo toca jugador
+    if (squares[disparoindex].classList.contains("enemigo")) { // 1 Forma de perder, enemigo toca jugador
         document.getElementById('gameOverTitle').style.visibility = 'visible';
         clearInterval(enemigosId)
         gameOver = true;
@@ -169,7 +169,7 @@ function moverenemigos() {
     );
 }
 
-    const ultimaFila = boardtamaño * (boardtamaño - 1);  //2 Forma de perder, enemigo tocan el final
+    const ultimaFila = boardtamaño * (boardtamaño - 1);  // 2 Forma de perder, enemigo tocan el final
     if (navesEnemigas.some(index => index >= ultimaFila)) {
         const resultDisplay = document.getElementById('resultDisplay');
         resultDisplay.innerHTML = '<span class="perdisteTitulo">PERDISTE</span>';
@@ -191,7 +191,7 @@ if (navesEnemigasBorradas.length === navesEnemigas.length) { // Verifica si toda
     }
 }
 
-enemigosId = setInterval(moverenemigos, 100) //Mueve a los enemigos cada 100 milisegundos
+enemigosId = setInterval(moverenemigos, 100) // Mueve a los enemigos cada 100 milisegundos
 
 /**
 * Restaura las posiciones de las naves enemigas
@@ -203,7 +203,7 @@ function resetearEnemigos() {
         squares[navesEnemigas[i]].classList.remove('enemigo');
     }
 
-    navesEnemigas.length = 0; //Limpia el areglo de naves enemigas
+    navesEnemigas.length = 0; // Limpia el areglo de naves enemigas
 
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 5; j++) {
@@ -221,9 +221,9 @@ function resetearEnemigos() {
 * @function dispara
 * @param {Event} e - Evento de teclado
 */
-function dispara(e) { //Funcion dispara a los enemigos desde la nave
+function dispara(e) { // Funcion dispara a los enemigos desde la nave
 
-    if (gameOver) { //Si pierde o gana, se detiene
+    if (gameOver) { // Si pierde o gana, se detiene
         return
     }
     const currentTime = new Date().getTime(); // Obtener el tiempo actual
@@ -240,9 +240,9 @@ let sonidoExplosion = new Audio("../Sonidos/sonidoMuerteEnemigo.wav")
 * Mueve el láser disparado por la nave
 * @function moverLaser
 */
-function moverLaser() { //La funcion que mueve los lasers
+function moverLaser() { // La funcion que mueve los lasers
 
-    if (gameOver) { //Si pierde o gana, se detiene
+    if (gameOver) { // Si pierde o gana, se detiene
     return
     }
     squares[laserindex].classList.remove('laser')
@@ -250,13 +250,13 @@ function moverLaser() { //La funcion que mueve los lasers
     squares[laserindex].classList.add('laser')
     const naveEnemigaBorrada = navesEnemigas.indexOf(laserindex)
     if (naveEnemigaBorrada !== -1) {
-    if (squares[laserindex].classList.contains('enemigo')) {//Si toca el laser al enemigo
-        squares[laserindex].classList.remove('laser') //Se va el laser
-        squares[laserindex].classList.remove('enemigo') //Se va el enemigo
-        squares[laserindex].classList.add('explotar')//Genera imagen de explotar
+    if (squares[laserindex].classList.contains('enemigo')) {// Si toca el laser al enemigo
+        squares[laserindex].classList.remove('laser') // Se va el laser
+        squares[laserindex].classList.remove('enemigo') // Se va el enemigo
+        squares[laserindex].classList.add('explotar')// Genera imagen de explotar
         sonidoExplosion.play(); 
 
-    setTimeout(() => squares[laserindex].classList.remove('explotar'), 300)//remueve la explosion despues de 600 milisegundos
+    setTimeout(() => squares[laserindex].classList.remove('explotar'), 300)// Remueve la explosion despues de 600 milisegundos
     clearInterval(laserId)
 
     //Scoreboard en pantalla
@@ -264,14 +264,14 @@ function moverLaser() { //La funcion que mueve los lasers
     results++
     resultDisplay.innerHTML = results
     localStorage.setItem('results', results);
-    console.log(navesEnemigasBorradas) //Borrar todo una vez que se destruye, enemigos y lasers
+    console.log(navesEnemigasBorradas) // Borrar todo una vez que se destruye, enemigos y lasers
             }
         }
     }
 
         if (e.key === 'ArrowUp') {
             sonidoLaser.play();
-            laserId = setInterval(moverLaser, 100) //tiempo de movimiento laser
+            laserId = setInterval(moverLaser, 100) // Tiempo de movimiento laser
         }
     }
 }
@@ -356,7 +356,7 @@ function mostrarPuntaje() {
     }
 }
 
-//Función para austar el BoardSize / porque al cambiar el tamaño de la pantalla, se achichan los div 
+// Función para austar el BoardSize / porque al cambiar el tamaño de la pantalla, se achichan los div 
 function adjustBoardSize() {
     const board = document.querySelector('.board');
     const squares = Array.from(board.querySelectorAll('div'));
@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function () {
 window.addEventListener('resize', adjustBoardSize);
 
 
-//Botones de control para celulares
+// Botones de control para celulares
 document.getElementById('btn-izquierda').addEventListener('click', () => {
     if (!gameOver && disparoindex % boardtamaño !== 0) {
         squares[disparoindex].classList.remove('disparador', `disparador-nave${naveSeleccionada.charAt(naveSeleccionada.length - 1)}`);
